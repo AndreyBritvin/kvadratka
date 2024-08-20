@@ -116,17 +116,21 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
         return ;
     }
 
+    double first_add = (-coef.b) / (2 * coef.a);
+
     if (compare_double(discriminant, 0))
     {
         sol->n_roots = ONE_ROOT;
-        sol->x1 = sol->x2 = (-coef.b) / (2 * coef.a);
+        sol->x1 = sol->x2 = first_add;
 
         return ;
     }
 
+    double second_add = (sqrt(discriminant)) / (2 * coef.a);
+
     sol->n_roots = TWO_ROOTS;
-    sol->x1 = (-coef.b + sqrt(discriminant)) / (2 * coef.a);
-    sol->x2 = (-coef.b - sqrt(discriminant)) / (2 * coef.a);
+    sol->x1 = first_add + second_add;
+    sol->x2 = first_add - second_add;
 
     return ;
 }
