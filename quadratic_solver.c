@@ -1,30 +1,65 @@
 #include <stdio.h>
 #include <math.h>
 
-#define EPSILON 1e-5
+const double EPSILON = 1e-7;
 
-void solve_quadratic_equation(double coef_a,double coef_b,double coef_c);
+enum number_of_roots
+{
+    INF_ROOTS = -1,
+    ZERO_ROOTS,
+    ONE_ROOT,
+    TWO_ROOTS
+};
+
+struct solution
+{
+    int n_roots;
+    double x1;
+    double x2;
+};
+
+struct coefficient
+{
+    double a;
+    double b;
+    double c;
+};
+
+
 double get_coef(char parametr);
+void solve_quadratic_equation(const struct coefficient coef, struct solution *sol);
+void solve_linear_equation(const struct coefficient coef, struct solution *sol);
+void solve_equation(const struct coefficient coef, struct solution *sol);
+void print_solution(const struct coefficient coef, const struct solution sol);
+int compare_double(double d1, double d2);
+
 
 int main()
 {
     printf("Это программа для решений квадратных уравнений вида ax^2+bx+c=0.\n");
     printf("Начните вводить коэффициенты c новой строки\n");
 
+    struct coefficient coef_test = {1e-20,0,1};
+    struct solution sol_test = {ZERO_ROOTS, 0, 0};
+    solve_equation(coef_test, &sol_test);
+    print_solution(coef_test, sol_test);
+
+    /*
     char is_quit;
     do{
         solve_quadratic_equation(get_coef('a'),get_coef('b'),get_coef('c'));
         printf("Решить новое уравнение? Введите y для продолжения, n для выхода из программы\n");
 
         getchar();//skip \n from previous coef
-        if ((is_quit=getchar())=='n')
+        if ((is_quit=getchar()) == 'n')
         {
             break;
         }
-        while ((is_quit=getchar())!='\n')
+        while ((is_quit=getchar()) != '\n')
             continue;
     }
-    while(is_quit!=EOF);
+    while(is_quit != EOF);
+    */
     return 0;
 }
 
@@ -45,26 +80,101 @@ double get_coef(char parametr)
     return coef;
 }
 
-void solve_quadratic_equation(double coef_a,double coef_b,double coef_c)
+void solve_equation(const struct coefficient coef, struct solution *sol)
 {
-    double discriminant = coef_b*coef_b-4*coef_a*coef_c;
-
-    printf("Уравнение %lgx^2%+lgx%+lg=0 ",coef_a,coef_b,coef_c);
-    if (discriminant<0)
+    if (compare_double(coef.a,0))
     {
-        printf("не имеет действительных решений.\n");    
-        return;
+        solve_linear_equation(coef, sol);
     }
-    if (fabs(discriminant-0)<EPSILON)
+    else
     {
-        double x1 = (-coef_b)/(2*coef_a);
-        printf("имеет одно решение: x=%lg\n",x1);
-        return;
+        solve_quadratic_equation(coef,sol);
     }
-
-    double x1 = (-coef_b+sqrt(discriminant))/(2*coef_a);
-    double x2 = (-coef_b-sqrt(discriminant))/(2*coef_a);
-    printf("имеет два решения: x1=%lg и x2=%lg\n",x1,x2);
 }
 
+void solve_quadratic_equation(const struct coefficient coef, struct solution *sol)
+{
+    double discriminant = coef.b*coef.b-4*coef.a*coef.c;
 
+    if (discriminant<0)
+    {
+        sol->n_roots = ZERO_ROOTS;
+        sol->x1 = sol->x2 = 0;
+
+        return ;
+    }
+    if (compare_double(discriminant, 0))
+    {
+        sol->n_roots = ONE_ROOT;
+        sol->x1 = sol->x2 = (-coef.b)/(2*coef.a);
+
+        return ;
+    }
+
+    sol->n_roots = TWO_ROOTS;
+    sol->x1 = (-coef.b+sqrt(discriminant))/(2*coef.a);
+    sol->x2 = (-coef.b-sqrt(discriminant))/(2*coef.a);
+
+    return ;
+}
+
+void solve_linear_equation(const struct coefficient coef, struct solution *sol)
+{
+    if (compare_double(coef.b,0))
+    {
+        sol->n_roots = INF_ROOTS;
+        sol->x1 = sol->x2 = 0;
+        return ;
+    }
+
+    sol->n_roots = ONE_ROOT;
+    sol->x1 = sol->x2 = (-coef.c)/coef.b;
+
+    return ;
+}
+
+void print_solution(const struct coefficient coef, const struct solution sol)
+{
+    printf("Уравнение %lgx^2%+lgx%+lg=0 ", coef.a, coef.b, coef.c);
+
+    switch (sol.n_roots)
+    {
+        case ZERO_ROOTS:
+        {
+            printf("не имеет действительных корней.\n");
+            break;
+        }
+
+        case ONE_ROOT:
+        {
+            printf("имеет один корень:\n"
+                   "x1=%lg\n",sol.x1);
+            break;
+        }
+
+        case TWO_ROOTS:
+        {
+            printf("имеет два корня:\n"
+                   "x1=%lg\n"
+                   "x2=%lg\n", sol.x1, sol.x2);
+            break;
+        }
+
+        case INF_ROOTS:
+        {
+            printf(" имеет бесконечное количество корней");
+            break;
+        }
+
+        default:
+        {
+            fprintf(stderr, "ERROR: print_solutions(): %lg", sol.n_roots);
+            break;
+        }
+    }
+}
+
+int compare_double(double d1, double d2)
+{
+    return (fabs(d1-d2)<EPSILON) ? 1: 0;
+}
