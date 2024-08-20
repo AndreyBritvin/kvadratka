@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdbool.h>
 
 const double EPSILON = 1e-7;
 
 enum number_of_roots
 {
-    INF_ROOTS = -1,
-    ZERO_ROOTS,
-    ONE_ROOT,
-    TWO_ROOTS
+    INF_ROOTS  = -1,
+    ZERO_ROOTS =  0,
+    ONE_ROOT   =  1,
+    TWO_ROOTS  =  2,
 };
 
 struct solution
@@ -32,7 +33,7 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 void solve_equation(const struct coefficient coef, struct solution *sol);
 void print_solution(const struct coefficient coef, const struct solution sol);
-int compare_double(double d1, double d2);
+_Bool compare_double(double d1, double d2);
 
 
 int main()
@@ -40,7 +41,8 @@ int main()
     print_greeting();
 
     char is_quit;
-    do{
+    do
+    {
         struct coefficient coeffs = {0, 0, 0};
         struct solution sol = {0, 0, 0};
 
@@ -51,12 +53,15 @@ int main()
         printf("Решить новое уравнение? Введите y для продолжения, n для выхода из программы\n");
 
         getchar();//skip \n from previous coef
-        if ((is_quit=getchar()) == 'n')
+        if ((is_quit = getchar()) == 'n')
         {
             break;
         }
-        while ((is_quit=getchar()) != '\n')
+
+        while ((is_quit = getchar()) != '\n')
+        {
             continue;
+        }
     }
     while(is_quit != EOF);
 
@@ -77,6 +82,7 @@ double get_one_coef(char parametr)
         }
         printf(" не является допустимым вводом. Введите целое или дробное число, например: 1.618 или 3.14\n");
     }
+
     return coef;
 }
 
@@ -101,12 +107,12 @@ void solve_equation(const struct coefficient coef, struct solution *sol)
 
 void solve_quadratic_equation(const struct coefficient coef, struct solution *sol)
 {
-    double discriminant = coef.b*coef.b-4*coef.a*coef.c;
+    double discriminant = coef.b * coef.b - 4 * coef.a * coef.c;
 
-    if (discriminant<0)
+    if (discriminant < 0)
     {
         sol->n_roots = ZERO_ROOTS;
-        sol->x1 = sol->x2 = 0;
+        sol->x1 = sol->x2 = 0; // TODO: remove
 
         return ;
     }
@@ -114,7 +120,7 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     if (compare_double(discriminant, 0))
     {
         sol->n_roots = ONE_ROOT;
-        sol->x1 = sol->x2 = (-coef.b)/(2*coef.a);
+        sol->x1 = sol->x2 = (-coef.b) / (2 * coef.a);
 
         return ;
     }
@@ -182,7 +188,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
     }
 }
 
-int compare_double(double d1, double d2)
+_Bool compare_double(double d1, double d2)
 {
     return (fabs(d1-d2)<EPSILON) ? 1: 0;
 }
