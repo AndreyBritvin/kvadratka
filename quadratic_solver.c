@@ -112,7 +112,6 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     if (discriminant < 0)
     {
         sol->n_roots = ZERO_ROOTS;
-        sol->x1 = sol->x2 = 0; // TODO: remove
 
         return ;
     }
@@ -126,8 +125,8 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     }
 
     sol->n_roots = TWO_ROOTS;
-    sol->x1 = (-coef.b + sqrt(discriminant)) / (2*coef.a);
-    sol->x2 = (-coef.b - sqrt(discriminant)) / (2*coef.a);
+    sol->x1 = (-coef.b + sqrt(discriminant)) / (2 * coef.a);
+    sol->x2 = (-coef.b - sqrt(discriminant)) / (2 * coef.a);
 
     return ;
 }
@@ -136,13 +135,20 @@ void solve_linear_equation(const struct coefficient coef, struct solution *sol)
 {
     if (compare_double(coef.b, 0))
     {
-        sol->n_roots = INF_ROOTS;
-        sol->x1 = sol->x2 = 0;
+        if (compare_double(coef.c, 0))
+        {
+            sol->n_roots = INF_ROOTS;
+        }
+        else
+        {
+            sol->n_roots = ZERO_ROOTS;
+        }
+
         return ;
     }
 
     sol->n_roots = ONE_ROOT;
-    sol->x1 = sol->x2 = (-coef.c) /coef.b;
+    sol->x1 = sol->x2 = (-coef.c) / coef.b;
 
     return ;
 }
@@ -190,7 +196,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
 
 _Bool compare_double(double d1, double d2)
 {
-    return (fabs(d1-d2)<EPSILON) ? 1: 0;
+    return (fabs(d1 - d2) < EPSILON) ? 1 : 0;
 }
 
 void print_greeting()
