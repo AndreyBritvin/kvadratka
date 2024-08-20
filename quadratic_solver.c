@@ -25,8 +25,9 @@ struct coefficient
     double c;
 };
 
-
-double get_coef(char parametr);
+void print_greeting();
+double get_one_coef(char parametr);
+void get_coefficients(struct coefficient *coef);
 void solve_quadratic_equation(const struct coefficient coef, struct solution *sol);
 void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 void solve_equation(const struct coefficient coef, struct solution *sol);
@@ -36,18 +37,17 @@ int compare_double(double d1, double d2);
 
 int main()
 {
-    printf("Это программа для решений квадратных уравнений вида ax^2+bx+c=0.\n");
-    printf("Начните вводить коэффициенты c новой строки\n");
+    print_greeting();
 
-    struct coefficient coef_test = {1e-20,0,1};
-    struct solution sol_test = {ZERO_ROOTS, 0, 0};
-    solve_equation(coef_test, &sol_test);
-    print_solution(coef_test, sol_test);
-
-    /*
     char is_quit;
     do{
-        solve_quadratic_equation(get_coef('a'),get_coef('b'),get_coef('c'));
+        struct coefficient coeffs = {0, 0, 0};
+        struct solution sol = {0, 0, 0};
+
+        get_coefficients(&coeffs);
+        solve_equation(coeffs, &sol);
+        print_solution(coeffs, sol);
+
         printf("Решить новое уравнение? Введите y для продолжения, n для выхода из программы\n");
 
         getchar();//skip \n from previous coef
@@ -59,19 +59,19 @@ int main()
             continue;
     }
     while(is_quit != EOF);
-    */
+
     return 0;
 }
 
-double get_coef(char parametr)
+double get_one_coef(char parametr)
 {
     double coef;
     char ch;
 
     printf("Пожалуйста, введите коэффициент %c\n",parametr);
-    while (scanf("%lf", &coef)!=1) // ещё надо придумать, как отфильтровать значение а~0
+    while (scanf("%lf", &coef) != 1) // ещё надо придумать, как отфильтровать значение а~0
     {
-        while((ch = getchar())!='\n')
+        while((ch = getchar()) != '\n')
         {
             putchar(ch);
         }
@@ -80,15 +80,22 @@ double get_coef(char parametr)
     return coef;
 }
 
+void get_coefficients(struct coefficient *coef)
+{
+    coef->a = get_one_coef('a');
+    coef->b = get_one_coef('b');
+    coef->c = get_one_coef('c');
+}
+
 void solve_equation(const struct coefficient coef, struct solution *sol)
 {
-    if (compare_double(coef.a,0))
+    if (compare_double(coef.a, 0))
     {
         solve_linear_equation(coef, sol);
     }
     else
     {
-        solve_quadratic_equation(coef,sol);
+        solve_quadratic_equation(coef, sol);
     }
 }
 
@@ -103,6 +110,7 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 
         return ;
     }
+
     if (compare_double(discriminant, 0))
     {
         sol->n_roots = ONE_ROOT;
@@ -112,15 +120,15 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     }
 
     sol->n_roots = TWO_ROOTS;
-    sol->x1 = (-coef.b+sqrt(discriminant))/(2*coef.a);
-    sol->x2 = (-coef.b-sqrt(discriminant))/(2*coef.a);
+    sol->x1 = (-coef.b + sqrt(discriminant)) / (2*coef.a);
+    sol->x2 = (-coef.b - sqrt(discriminant)) / (2*coef.a);
 
     return ;
 }
 
 void solve_linear_equation(const struct coefficient coef, struct solution *sol)
 {
-    if (compare_double(coef.b,0))
+    if (compare_double(coef.b, 0))
     {
         sol->n_roots = INF_ROOTS;
         sol->x1 = sol->x2 = 0;
@@ -128,7 +136,7 @@ void solve_linear_equation(const struct coefficient coef, struct solution *sol)
     }
 
     sol->n_roots = ONE_ROOT;
-    sol->x1 = sol->x2 = (-coef.c)/coef.b;
+    sol->x1 = sol->x2 = (-coef.c) /coef.b;
 
     return ;
 }
@@ -177,4 +185,10 @@ void print_solution(const struct coefficient coef, const struct solution sol)
 int compare_double(double d1, double d2)
 {
     return (fabs(d1-d2)<EPSILON) ? 1: 0;
+}
+
+void print_greeting()
+{
+    printf("Это программа для решений квадратных уравнений вида ax^2+bx+c=0.\n");
+    printf("Начните вводить коэффициенты c новой строки\n");
 }
