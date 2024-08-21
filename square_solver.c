@@ -41,14 +41,14 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     assert(isfinite(coef.b));
     assert(isfinite(coef.c));
 
-    assert(isnan(coef.a));
-    assert(isnan(coef.b));
-    assert(isnan(coef.c));
+    assert(!isnan(coef.a));
+    assert(!isnan(coef.b));
+    assert(!isnan(coef.c));
 
     double discriminant = coef.b * coef.b - 4 * coef.a * coef.c;
 
     assert(isfinite(discriminant));
-    assert(isnan(discriminant));
+    assert(!isnan(discriminant));
 
     double first_add = (-coef.b) / (2 * coef.a);
 

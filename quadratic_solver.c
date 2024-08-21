@@ -11,7 +11,7 @@
 
 int main()
 {
-    run_all_tests();
+    printf("Неверно пройденных тестов: %d\n", run_all_tests());
 
     print_greeting();
 

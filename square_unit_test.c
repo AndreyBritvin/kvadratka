@@ -3,16 +3,14 @@
 struct unit_test_input all_tests[] =
 {
     //a,b,c         n_roots, x1, x2
-    {{0, 0, 0}, {INF_ROOTS, 0, 0}},
-    {{0, 0, 3.14159265}, {ZERO_ROOTS, 0, 0}},
-    {{0, 5, -2.5}, {ONE_ROOT, 0, 0}},
-    {{0, 0, 0}, {0, 0, 0}},
-    {{0, 0, 0}, {0, 0, 0}},
-    {{0, 0, 0}, {0, 0, 0}},
-    {{0, 0, 0}, {0, 0, 0}},
-    {{1, 2, 1}, {ONE_ROOT, -1, -1}},
-
-
+    {{0, 0, 0},             {INF_ROOTS ,  0,       0}},
+    {{0, 0, 3.14159265},    {ZERO_ROOTS,  0,       0}},
+    {{0, 5, -2.5},          {ONE_ROOT  ,0.5,     0.5}},
+    {{2.5, 0, -10},         {TWO_ROOTS , -2,       2}},
+    {{0, -432, 0},          {ONE_ROOT  ,  0,       0}},
+    {{3.34, 0, 0},          {ONE_ROOT  ,  0,       0}},
+    {{-5.6, 8.23, 0},       {TWO_ROOTS ,  0, 1.46964}},
+    {{1, 2, 1},             {ONE_ROOT  , -1,      -1}},
 };
 
 int run_test(unsigned int test_id, struct unit_test_input input)
@@ -24,12 +22,15 @@ int run_test(unsigned int test_id, struct unit_test_input input)
     set_minimum_solution(&input.expected_solution.x1, &input.expected_solution.x2);
     set_minimum_solution(&sol_to_check.x1,            &sol_to_check.x2           );
 
+
     if (input.expected_solution.n_roots != sol_to_check.n_roots ||
         !compare_equal_double(input.expected_solution.x1, sol_to_check.x1) ||
         !compare_equal_double(input.expected_solution.x1, sol_to_check.x1))
     {
-        printf("ERROR in Test #%u: a=%lg b=%lg c=%lg n_roots=%d x1=%lg x2=%lg\n"
-               "Expected values: n_roots=%d x1=%lg x2=%lg\n",
+        printf("---------------------------------------------------------------\n"
+               "! ERROR in Test #%u: a=%lg b=%lg c=%lg n_roots=%d x1=%lg x2=%lg\n"
+               "! Expected values: n_roots=%d x1=%lg x2=%lg\n"
+               "---------------------------------------------------------------\n",
                test_id, input.coefficients.a, input.coefficients.b, input.coefficients.c,
                sol_to_check.n_roots, sol_to_check.x1, sol_to_check.x2,
                input.expected_solution.n_roots, input.expected_solution.x1, input.expected_solution.x2);
@@ -42,13 +43,15 @@ int run_test(unsigned int test_id, struct unit_test_input input)
 
 int run_all_tests()
 {
-    int count_success = (unsigned int) sizeof(all_tests) / sizeof(struct unit_test_input);
+    int count_unsuccess = 0;
 
-    for (unsigned int test_id = 0; test_id < count_success; test_id++)
+    unsigned int MAX_TEST_COUNT = (unsigned int) sizeof(all_tests) / sizeof(struct unit_test_input);
+
+    for (unsigned int test_id = 0; test_id < MAX_TEST_COUNT; test_id++)
     {
-        count_success -= run_test(test_id + 1, all_tests[test_id]);
+        count_unsuccess += run_test(test_id + 1, all_tests[test_id]);
     }
-    return count_success;
+    return count_unsuccess;
 }
 
 
