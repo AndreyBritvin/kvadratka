@@ -9,7 +9,7 @@ struct unit_test_input
     struct solution expected_solution;
 };
 
-int run_test(int test_id, struct unit_test_input);
+int run_test(unsigned int test_id, struct unit_test_input);
 
 int run_all_tests();
 
