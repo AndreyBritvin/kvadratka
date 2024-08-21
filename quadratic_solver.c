@@ -1,6 +1,8 @@
 #include <stdio.h>
-#include <math.h>
 #include <stdbool.h>
+#include <stdlib.h>
+
+#include <math.h>
 
 const double EPSILON = 1e-7;
 
@@ -27,12 +29,15 @@ struct coefficient
 };
 
 void print_greeting();
-double get_one_coef(char parametr);
+
 void get_coefficients(struct coefficient *coef);
+
 void solve_quadratic_equation(const struct coefficient coef, struct solution *sol);
 void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 void solve_equation(const struct coefficient coef, struct solution *sol);
+
 void print_solution(const struct coefficient coef, const struct solution sol);
+
 _Bool compare_double(double d1, double d2);
 
 
@@ -52,7 +57,6 @@ int main()
 
         printf("Решить новое уравнение? Введите y для продолжения, n для выхода из программы\n");
 
-        getchar();//skip \n from previous coef
         if ((is_quit = getchar()) == 'n')
         {
             break;
@@ -68,30 +72,33 @@ int main()
     return 0;
 }
 
-double get_one_coef(char parametr)
+void get_coefficients(struct coefficient *coef)
 {
-    double coef;
-    char ch;
+    int ch;
 
-    printf("Пожалуйста, введите коэффициент %c\n",parametr);
-    while (scanf("%lf", &coef) != 1) // ещё надо придумать, как отфильтровать значение а~0
+    printf("Пожалуйста, введите коэффициенты a, b, c\n");
+
+    int ret = 0;
+
+    while ( (ret = scanf("%lf %lf %lf", &coef->a, &coef->b, &coef->c)) != 3)
     {
-        while((ch = getchar()) != '\n')
+        printf("%lg", coef->a);
+
+        while ((ch = getchar()) != '\n')
         {
-            putchar(ch);
+            printf("%c", ch);
         }
         printf(" не является допустимым вводом. Введите целое или дробное число, например: 1.618 или 3.14\n");
     }
 
-    return coef;
+    while ((ch = getchar()) != '\n' && ch != EOF)
+    {
+            continue;
+    }
+
+    return ;
 }
 
-void get_coefficients(struct coefficient *coef)
-{
-    coef->a = get_one_coef('a');
-    coef->b = get_one_coef('b');
-    coef->c = get_one_coef('c');
-}
 
 void solve_equation(const struct coefficient coef, struct solution *sol)
 {
@@ -186,7 +193,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
 
         case INF_ROOTS:
         {
-            printf(" имеет бесконечное количество корней");
+            printf(" имеет бесконечное количество корней\n");
             break;
         }
 
