@@ -1,6 +1,14 @@
 #include "square_unit_test.h"
 
-int run_test(struct unit_test_input input)
+struct unit_test_input all_tests[] =
+{
+    {{0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}},
+    {{0, 0, 0}, {0, 0, 0}},
+};
+
+int run_test(int test_id, struct unit_test_input input)
 {
     double x1 = 0, x2 = 0;
 
@@ -15,8 +23,10 @@ int run_test(struct unit_test_input input)
 
 int run_all_tests()
 {
-
-    run_test();
+    for (int test_id = 0; test_id < sizeof(all_tests) / sizeof(struct unit_test_input); test_id++)
+    {
+        run_test(test_id, all_tests[test_id]);
+    }
     return 0;
 }
 

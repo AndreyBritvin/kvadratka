@@ -5,12 +5,11 @@
 
 struct unit_test_input
 {
-    int test_num;
     struct coefficient coefficients;
     struct solution expected_solution;
 };
 
-int run_test(struct unit_test_input);
+int run_test(int test_id, struct unit_test_input);
 
 int run_all_tests();
 
