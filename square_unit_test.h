@@ -9,6 +9,12 @@ struct unit_test_input
     struct solution expected_solution;
 };
 
+enum check_status
+{
+    SOLUTION_CORRECT,
+    SOLUTION_INCORRECT,
+};
+
 int run_test(unsigned int test_id, struct unit_test_input);
 
 int run_all_tests();
