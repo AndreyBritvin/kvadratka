@@ -1,7 +1,8 @@
 #include "square_unit_test.h"
 
-int run_test(struct test_input input)
+int run_test(test_input input)
 {
+
     return 0;
 }
 

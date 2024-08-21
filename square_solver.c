@@ -125,11 +125,6 @@ void print_solution(const struct coefficient coef, const struct solution sol)
     }
 }
 
-_Bool compare_equal_double(double d1, double d2)
-{
-    return (fabs(d1 - d2) < EPSILON) ? 1 : 0;
-}
-
 void print_greeting()
 {
     printf("Это программа для решений квадратных уравнений вида ax^2+bx+c=0.\n");

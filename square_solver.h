@@ -7,7 +7,8 @@
 
 #include <math.h>
 
-static const double EPSILON = 1e-7;
+#include "double_procedures.h"
+
 
 enum number_of_roots
 {
@@ -40,8 +41,6 @@ void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 void solve_equation(const struct coefficient coef, struct solution *sol);
 
 void print_solution(const struct coefficient coef, const struct solution sol);
-
-_Bool compare_equal_double(double d1, double d2);
 
 void clear_buffer(_Bool print_buf);
 
