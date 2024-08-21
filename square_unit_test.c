@@ -2,15 +2,15 @@
 
 struct unit_test_input all_tests[] =
 {
-    //a,b,c         n_roots, x1, x2
-    {{0, 0, 0},             {INF_ROOTS ,  0,       0}},
-    {{0, 0, 3.14159265},    {ZERO_ROOTS,  0,       0}},
-    {{0, 5, -2.5},          {ONE_ROOT  ,0.5,     0.5}},
-    {{2.5, 0, -10},         {TWO_ROOTS , -2,       2}},
-    {{0, -432, 0},          {ONE_ROOT  ,  0,       0}},
-    {{3.34, 0, 0},          {ONE_ROOT  ,  0,       0}},
-    {{-5.6, 8.23, 0},       {TWO_ROOTS ,  0, 1.46964}},
-    {{1, 2, 1},             {ONE_ROOT  , -1,      -1}},
+    //a, b, c                 n_roots,   x1,      x2
+    {{   0,    0,          0},    {INF_ROOTS ,  0,       0}},
+    {{   0,    0, 3.14159265},    {ZERO_ROOTS,  0,       0}},
+    {{   0,    5,       -2.5},    {ONE_ROOT  ,0.5,     0.5}},
+    {{ 2.5,    0,        -10},    {TWO_ROOTS , -2,       2}},
+    {{   0, -432,          0},    {ONE_ROOT  ,  0,       0}},
+    {{3.34,    0,          0},    {ONE_ROOT  ,  0,       0}},
+    {{-5.6, 8.23,          0},    {TWO_ROOTS ,  0, 1.46964}},
+    {{   1,    2,          1},    {ONE_ROOT  , -1,      -1}},
 };
 
 int run_test(unsigned int test_id, struct unit_test_input input)
@@ -23,9 +23,9 @@ int run_test(unsigned int test_id, struct unit_test_input input)
     set_minimum_solution(&sol_to_check.x1,            &sol_to_check.x2           );
 
 
-    if (input.expected_solution.n_roots != sol_to_check.n_roots ||
-        !compare_equal_double(input.expected_solution.x1, sol_to_check.x1) ||
-        !compare_equal_double(input.expected_solution.x1, sol_to_check.x1))
+    if (input.expected_solution.n_roots != sol_to_check.n_roots
+        || !compare_equal_double(input.expected_solution.x1, sol_to_check.x1)
+        || !compare_equal_double(input.expected_solution.x1, sol_to_check.x1))
     {
         printf("---------------------------------------------------------------\n"
                "! ERROR in Test #%u: a=%lg b=%lg c=%lg n_roots=%d x1=%lg x2=%lg\n"
@@ -51,6 +51,7 @@ int run_all_tests()
     {
         count_unsuccess += run_test(test_id + 1, all_tests[test_id]);
     }
+
     return count_unsuccess;
 }
 
