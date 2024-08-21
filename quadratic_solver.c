@@ -2,16 +2,19 @@
 #include <stdbool.h>
 #include <stdlib.h>
 
+#include "test_data.h"
+
 #include "square_solver.h"
 #include "square_unit_test.h"
+
 
 #include <math.h>
 
 
-
 int main()
 {
-    printf("Неверно пройденных тестов: %d\n", run_all_tests());
+    unsigned int MAX_TEST_COUNT = (unsigned int) sizeof(all_tests) / sizeof(struct unit_test_input);
+    printf("Неверно пройденных тестов: %d\n", run_all_tests(all_tests, MAX_TEST_COUNT));
 
     print_greeting();
 

@@ -1,10 +1,9 @@
-#include <stdbool.h>
-#include <math.h>
-#include <cassert>
-
-
 #ifndef DOUBLE_PROCEDURES_H
 #define DOUBLE_PROCEDURES_H
+
+#include <stdbool.h>
+#include <math.h>
+#include <assert.h>
 
 static const double EPSILON = 1e-7;
 
