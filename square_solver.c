@@ -25,7 +25,7 @@ void get_coefficients(struct coefficient *coef)
 
 void solve_equation(const struct coefficient coef, struct solution *sol)
 {
-    if (compare_double(coef.a, 0))
+    if (compare_equal_double(coef.a, 0))
     {
         solve_linear_equation(coef, sol);
     }
@@ -41,7 +41,7 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 
     double first_add = (-coef.b) / (2 * coef.a);
 
-    if (compare_double(discriminant, 0))
+    if (compare_equal_double(discriminant, 0))
     {
         sol->n_roots = ONE_ROOT;
         sol->x1 = sol->x2 = first_add;
@@ -66,9 +66,9 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 
 void solve_linear_equation(const struct coefficient coef, struct solution *sol)
 {
-    if (compare_double(coef.b, 0))
+    if (compare_equal_double(coef.b, 0))
     {
-        if (compare_double(coef.c, 0))
+        if (compare_equal_double(coef.c, 0))
         {
             sol->n_roots = INF_ROOTS;
         }
@@ -127,7 +127,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
     }
 }
 
-_Bool compare_double(double d1, double d2)
+_Bool compare_equal_double(double d1, double d2)
 {
     return (fabs(d1 - d2) < EPSILON) ? 1 : 0;
 }
