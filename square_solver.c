@@ -8,8 +8,6 @@ void get_coefficients(struct coefficient *coef)
 
     while ( (ret = scanf("%lf %lf %lf", &coef->a, &coef->b, &coef->c)) != 3)
     {
-        printf("%lg", coef->a);
-
         clear_buffer(true);
 
         printf(" не является допустимым вводом. Введите целое или дробное число, например: 1.618 или 3.14\n");
