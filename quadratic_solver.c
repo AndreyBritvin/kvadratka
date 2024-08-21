@@ -9,8 +9,10 @@
 
 
 
-int main()
+int main(int argc, char **argv)
 {
+    run_all_tests();
+
     print_greeting();
 
     int is_quit = 0;

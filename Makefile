@@ -4,6 +4,7 @@ CFLAGS = -lm -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive
 
 all:
 	$(CC) $(CFLAGS) quadratic_solver.c square_solver.c square_unit_test.c double_procedures.cpp
+	make run
 
 run:
 	./a.out
