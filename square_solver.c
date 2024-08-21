@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <math.h>
 #include "square_solver.h"
 
 void get_coefficients(struct coefficient *coef)

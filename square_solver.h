@@ -1,7 +1,11 @@
 #ifndef SQUARE_SOLVER_H
 #define SQUARE_SOLVER_H
 
+#include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+
+#include <math.h>
 
 static const double EPSILON = 1e-7;
 
