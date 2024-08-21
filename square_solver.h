@@ -9,6 +9,7 @@
 
 #include "double_procedures.h"
 
+#include <cassert>
 
 enum number_of_roots
 {
