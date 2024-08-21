@@ -1,3 +1,6 @@
+#ifndef SQUARE_SOLVER_H
+#define SQUARE_SOLVER_H
+
 #include <stdbool.h>
 
 static const double EPSILON = 1e-7;
@@ -35,3 +38,5 @@ void solve_equation(const struct coefficient coef, struct solution *sol);
 void print_solution(const struct coefficient coef, const struct solution sol);
 
 _Bool compare_double(double d1, double d2);
+
+#endif // SQUARE_SOLVER_H
