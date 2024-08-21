@@ -12,17 +12,12 @@ void get_coefficients(struct coefficient *coef)
     {
         printf("%lg", coef->a);
 
-        while ((ch = getchar()) != '\n')
-        {
-            printf("%c", ch);
-        }
+        clear_buffer(true);
+
         printf(" не является допустимым вводом. Введите целое или дробное число, например: 1.618 или 3.14\n");
     }
 
-    while ((ch = getchar()) != '\n' && ch != EOF)
-    {
-            continue;
-    }
+    clear_buffer(false);
 
     return ;
 }
@@ -44,13 +39,6 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 {
     double discriminant = coef.b * coef.b - 4 * coef.a * coef.c;
 
-    if (discriminant < 0)
-    {
-        sol->n_roots = ZERO_ROOTS;
-
-        return ;
-    }
-
     double first_add = (-coef.b) / (2 * coef.a);
 
     if (compare_double(discriminant, 0))
@@ -61,6 +49,12 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
         return ;
     }
 
+    if (discriminant < 0)
+    {
+        sol->n_roots = ZERO_ROOTS;
+
+        return ;
+    }
     double second_add = (sqrt(discriminant)) / (2 * coef.a);
 
     sol->n_roots = TWO_ROOTS;
@@ -142,4 +136,20 @@ void print_greeting()
 {
     printf("Это программа для решений квадратных уравнений вида ax^2+bx+c=0.\n");
     printf("Начните вводить коэффициенты c новой строки\n");
+}
+
+void clear_buffer(_Bool print_buf)
+{
+    int ch = 0;
+    while ((ch = getchar()) != '\n' && ch != EOF)
+    {
+        if(print_buf)
+        {
+            printf("%c", ch);
+        }
+        else
+        {
+            continue;
+        }
+    }
 }

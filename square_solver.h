@@ -43,4 +43,6 @@ void print_solution(const struct coefficient coef, const struct solution sol);
 
 _Bool compare_double(double d1, double d2);
 
+void clear_buffer(_Bool print_buf);
+
 #endif // SQUARE_SOLVER_H

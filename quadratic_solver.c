@@ -1,16 +1,18 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+
 #include "square_solver.h"
 
 #include <math.h>
+
 
 
 int main()
 {
     print_greeting();
 
-    char is_quit;
+    int is_quit = 0;
     do
     {
         struct coefficient coeffs = {0, 0, 0};
@@ -27,10 +29,7 @@ int main()
             break;
         }
 
-        while ((is_quit = getchar()) != '\n')
-        {
-            continue;
-        }
+        clear_buffer(false);
     }
     while(is_quit != EOF);
 
