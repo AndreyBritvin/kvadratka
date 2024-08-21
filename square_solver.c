@@ -2,8 +2,6 @@
 
 void get_coefficients(struct coefficient *coef)
 {
-    int ch;
-
     printf("Пожалуйста, введите коэффициенты a, b, c\n");
 
     int ret = 0;
@@ -121,7 +119,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
 
         default:
         {
-            fprintf(stderr, "ERROR: print_solutions(): %lg", sol.n_roots);
+            fprintf(stderr, "ERROR: print_solutions(): %d", sol.n_roots);
             break;
         }
     }

@@ -12,6 +12,6 @@ struct test_input
 
 int run_test(struct test_input);
 
-int run_all_test();
+int run_all_tests();
 
 #endif // SQUARE_UNIT_TEST_H

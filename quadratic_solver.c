@@ -3,6 +3,7 @@
 #include <stdlib.h>
 
 #include "square_solver.h"
+#include "square_unit_test.h"
 
 #include <math.h>
 
