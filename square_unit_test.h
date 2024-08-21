@@ -10,5 +10,8 @@ struct test_input
     struct solution expected_solution;
 };
 
+int run_test(struct test_input);
+
+int run_all_test();
 
 #endif // SQUARE_UNIT_TEST_H
