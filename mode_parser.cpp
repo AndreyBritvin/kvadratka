@@ -115,3 +115,4 @@ void help()
            "-s --solve\n"
            "Solves ax^2+bx+c=0. Enter coeefficients\n\n");
 }
+
