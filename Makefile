@@ -7,7 +7,7 @@ all:
 	make run
 
 run:
-	./a.out -help -test -help
+	./a.out --help -v --test -s
 
 clean:
 	rm ./a.out

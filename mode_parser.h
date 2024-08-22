@@ -14,6 +14,8 @@ void parse_mode(const char programm_name[], const char mode[]);
 void wrong_flag(const char programm_name[], const char wrong_mode[]);
 void solve_from_terminal();
 void version();
+void tests_result();
+void help();
 
 
 #endif // MODE_PARSER_H__

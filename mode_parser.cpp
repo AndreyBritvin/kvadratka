@@ -1,5 +1,6 @@
 #include "mode_parser.h"
 
+#include "test_data.h"
 
 enum mode_index
 {
@@ -23,9 +24,14 @@ void parse_mode(const char programm_name[], const char mode[])
         solve_from_terminal();
     }
 
-    else if (cmp_str_to_multiple(mode, "-s", "--solve"))
+    else if (cmp_str_to_multiple(mode, "-t", "--test"))
     {
-        solve_from_terminal();
+        tests_result();
+    }
+
+    else if (cmp_str_to_multiple(mode, "-h", "--help"))
+    {
+        help();
     }
 
     else
@@ -82,8 +88,30 @@ bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *s
 
     if (!strcmp(str_to_cmp, str1) || !strcmp(str_to_cmp, str2))
     {
-        return false;
+        return true;
     }
 
-    return true;
+    return false;
+}
+
+
+void tests_result()
+{
+    unsigned int MAX_TEST_COUNT = (unsigned int) sizeof(all_tests) / sizeof(struct unit_test_input);
+    printf("Неверно пройденных тестов: %d\n", run_all_tests(all_tests, MAX_TEST_COUNT));
+}
+
+void help()
+{
+    printf("-h --help\n"
+           "Help command\n\n"
+
+            "-v --version\n"
+           "Print programm version\n\n"
+
+           "-t --test\n"
+           "Run unit tests\n\n"
+
+           "-s --solve\n"
+           "Solves ax^2+bx+c=0. Enter coeefficients\n\n");
 }
