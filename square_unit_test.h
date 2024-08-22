@@ -2,7 +2,7 @@
 #define SQUARE_UNIT_TEST_H
 
 #include "square_solver.h"
-
+#include "color_output.h"
 
 struct unit_test_input
 {

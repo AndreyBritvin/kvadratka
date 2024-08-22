@@ -25,6 +25,12 @@ void set_color(int color)
             break;
         }
 
+        case GREEN:
+        {
+            set_green_color();
+            break;
+        }
+
         default:
         {
             reset_color();

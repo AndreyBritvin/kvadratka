@@ -15,7 +15,8 @@ int run_test(unsigned int test_id, struct unit_test_input input)
         || !compare_equal_double(input.expected_solution.x1, sol_to_check.x1)
         || !compare_equal_double(input.expected_solution.x1, sol_to_check.x1))
     {
-        printf("---------------------------------------------------------------\n"
+        print_color(RED,
+               "---------------------------------------------------------------\n"
                "! ERROR in Test #%u: a=%lg b=%lg c=%lg n_roots=%d x1=%lg x2=%lg\n"
                "! Expected values: n_roots=%d x1=%lg x2=%lg\n"
                "---------------------------------------------------------------\n",
@@ -35,7 +36,14 @@ int run_all_tests(struct unit_test_input tests[], unsigned int MAX_TEST_COUNT)
 
     for (unsigned int test_id = 0; test_id < MAX_TEST_COUNT; test_id++)
     {
-        count_unsuccess += run_test(test_id + 1, tests[test_id]);
+        if (run_test(test_id + 1, tests[test_id]))
+        {
+            count_unsuccess++;
+        }
+        else
+        {
+            print_color(GREEN, "Test #%u passed\n", test_id + 1);
+        }
     }
 
     return count_unsuccess;
