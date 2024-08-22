@@ -7,11 +7,30 @@ enum mode_index
     MODE_2,
 };
 
+
 void parse_mode(const char programm_name[], const char mode[])
 {
-    if      (!strcmp(mode, "-v") || !strcmp(mode, "--version"))
+    assert(programm_name != NULL);
+    assert(mode != NULL);
+
+    if (cmp_str_to_multiple(mode, "-v", "--version"))
     {
-        print_version();
+        version();
+    }
+
+    else if (cmp_str_to_multiple(mode, "-s", "--solve"))
+    {
+        solve_from_terminal();
+    }
+
+    else if (cmp_str_to_multiple(mode, "-s", "--solve"))
+    {
+        solve_from_terminal();
+    }
+
+    else
+    {
+        wrong_flag(programm_name, mode);
     }
 }
 
@@ -50,7 +69,21 @@ void solve_from_terminal()
     while(is_quit != EOF);
 }
 
-void print_version()
+void version()
 {
     printf("I dont know which version it is\n");
+}
+
+bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *str2)
+{
+    assert(str_to_cmp != NULL);
+    assert(str1 != NULL);
+    assert(str2 != NULL);
+
+    if (!strcmp(str_to_cmp, str1) || !strcmp(str_to_cmp, str2))
+    {
+        return false;
+    }
+
+    return true;
 }
