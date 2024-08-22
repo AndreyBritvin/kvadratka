@@ -3,11 +3,13 @@
 #include <stdlib.h>
 #include <math.h>
 
-
+#include "color_output.h"
 #include "mode_parser.h"
 
 int main(int argc, char *argv[])
 {
+    print_color(0, "RED%s", "ydsad");
+
     if (argc == 1)
     {
         wrong_flag(argv[0], "");

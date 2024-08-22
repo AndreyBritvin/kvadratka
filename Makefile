@@ -4,8 +4,8 @@ CFLAGS = -lm -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive
 
 all: a.out # double_procedures.o square_solver.o square_unit_test.o mode_parser.o main.o
 
-a.out: main.o double_procedures.o square_solver.o square_unit_test.o mode_parser.o
-	$(CC) $(CFLAGS) square_solver.o square_unit_test.o double_procedures.o mode_parser.o main.o
+a.out: main.o double_procedures.o square_solver.o square_unit_test.o mode_parser.o color_output.o
+	$(CC) $(CFLAGS) square_solver.o square_unit_test.o double_procedures.o mode_parser.o main.o color_output.o
 
 main.o: main.cpp
 	$(CC) $(CFLAGS) -c main.cpp
@@ -21,6 +21,9 @@ double_procedures.o: double_procedures.cpp
 
 mode_parser.o: mode_parser.cpp
 	$(CC) $(CFLAGS) -c mode_parser.cpp
+
+color_output.o: color_output.cpp
+	$(CC) $(CFLAGS) -c color_output.cpp
 
 
 run:
