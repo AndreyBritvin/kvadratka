@@ -110,15 +110,15 @@ void print_solution(const struct coefficient coef, const struct solution sol)
         case ONE_ROOT:
         {
             printf("имеет один корень:\n"
-                   "x1=%lg\n",sol.x1);
+                   "x1 = %lg\n",sol.x1);
             break;
         }
 
         case TWO_ROOTS:
         {
             printf("имеет два корня:\n"
-                   "x1=%lg\n"
-                   "x2=%lg\n", sol.x1, sol.x2);
+                   "x1 = %lg\n"
+                   "x2 = %lg\n", sol.x1, sol.x2);
             break;
         }
 
