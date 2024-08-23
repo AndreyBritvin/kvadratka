@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include <math.h>
-#include <assert.h>
+#include "my_assert.h"
 
 static const double EPSILON = 1e-7;
 

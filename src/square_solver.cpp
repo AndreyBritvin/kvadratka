@@ -33,20 +33,20 @@ void solve_equation(const struct coefficient coef, struct solution *sol)
 
 void solve_quadratic_equation(const struct coefficient coef, struct solution *sol)
 {
-    assert(sol != NULL);
+    MY_ASSERT(sol != NULL);
 
-    assert(isfinite(coef.a));
-    assert(isfinite(coef.b));
-    assert(isfinite(coef.c));
+    MY_ASSERT(isfinite(coef.a));
+    MY_ASSERT(isfinite(coef.b));
+    MY_ASSERT(isfinite(coef.c));
 
-    assert(!isnan(coef.a));
-    assert(!isnan(coef.b));
-    assert(!isnan(coef.c));
+    MY_ASSERT(!isnan(coef.a));
+    MY_ASSERT(!isnan(coef.b));
+    MY_ASSERT(!isnan(coef.c));
 
     double discriminant = coef.b * coef.b - 4 * coef.a * coef.c;
 
-    assert(isfinite(discriminant));
-    assert(!isnan(discriminant));
+    MY_ASSERT(isfinite(discriminant));
+    MY_ASSERT(!isnan(discriminant));
 
     double first_add = (-coef.b) / (2 * coef.a);
 

@@ -5,7 +5,7 @@
 #include <string.h>
 #include "square_solver.h"
 #include "square_unit_test.h"
-#include <assert.h>
+#include "my_assert.h"
 
 bool cmp_str_to_multiple(const char *first_str_to_cmp, const char *str1, const char *str2);
 

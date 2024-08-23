@@ -9,7 +9,7 @@
 
 #include "double_procedures.h"
 
-#include <assert.h>
+#include "my_assert.h"
 
 enum number_of_roots
 {

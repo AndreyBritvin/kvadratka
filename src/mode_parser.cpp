@@ -11,8 +11,8 @@ enum mode_index
 
 void parse_mode(const char programm_name[], const char mode[])
 {
-    assert(programm_name != NULL);
-    assert(mode != NULL);
+    MY_ASSERT(programm_name != NULL);
+    MY_ASSERT(mode != NULL);
 
     if (cmp_str_to_multiple(mode, "-v", "--version"))
     {
@@ -82,9 +82,9 @@ void version()
 
 bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *str2)
 {
-    assert(str_to_cmp != NULL);
-    assert(str1 != NULL);
-    assert(str2 != NULL);
+    MY_ASSERT(str_to_cmp != NULL);
+    MY_ASSERT(str1 != NULL);
+    MY_ASSERT(str2 != NULL);
 
     if (!strcmp(str_to_cmp, str1) || !strcmp(str_to_cmp, str2))
     {
