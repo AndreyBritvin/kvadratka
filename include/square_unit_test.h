@@ -1,7 +1,7 @@
 /**
  * @file square_unit_test.h
  * @author Andrey Britvin
- * @brief
+ * @brief Unit test для solve_equation()
  * @version 1.0
  * @date 2024-08-23
  *
@@ -28,18 +28,20 @@ enum check_status
 };
 
 /**
- * @brief
+ * @brief Запускает единичный unit тест
  *
- * @param test_id
- * @return int
+ * @param test_id Номер теста
+ * @param test_input Входные данные для теста
+ *
+ * @return int SOLUTION_CORRECT если успешно, SOLUTION_INCORRECT
  */
-int run_test(unsigned int test_id, struct unit_test_input);
+int run_test(unsigned int test_id, struct unit_test_input test_input);
 
 /**
- * @brief
+ * @brief Запуск всех тестов
  *
- * @param MAX_TEST_COUNT
- * @return int
+ * @param MAX_TEST_COUNT Количество тестов для запуска
+ * @return int Количество неуспешных тестов
  */
 int run_all_tests(struct unit_test_input [], unsigned int MAX_TEST_COUNT);
 
