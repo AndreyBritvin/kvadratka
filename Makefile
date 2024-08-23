@@ -7,26 +7,26 @@ CFLAGS = $(HEADERS_INCLUDE) -lm -D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -W
 all: a.out # double_procedures.o square_solver.o square_unit_test.o mode_parser.o main.o
 
 a.out: main.o double_procedures.o square_solver.o square_unit_test.o mode_parser.o color_output.o
-	$(CC) $(CFLAGS) build/square_solver.o build/square_unit_test.o build/double_procedures.o build/mode_parser.o build/main.o build/color_output.o
+	@$(CC) $(CFLAGS) build/square_solver.o build/square_unit_test.o build/double_procedures.o build/mode_parser.o build/main.o build/color_output.o
 
 
 main.o: src/main.cpp
-	$(CC) $(CFLAGS) -c src/main.cpp -o build/main.o
+	@$(CC) $(CFLAGS) -c src/main.cpp -o build/main.o
 
 square_solver.o: src/square_solver.cpp
-	$(CC) $(CFLAGS) -c src/square_solver.cpp -o build/square_solver.o
+	@$(CC) $(CFLAGS) -c src/square_solver.cpp -o build/square_solver.o
 
 square_unit_test.o: src/square_unit_test.cpp
-	$(CC) $(CFLAGS) -c src/square_unit_test.cpp -o build/square_unit_test.o
+	@$(CC) $(CFLAGS) -c src/square_unit_test.cpp -o build/square_unit_test.o
 
 double_procedures.o: src/double_procedures.cpp
-	$(CC) $(CFLAGS) -c src/double_procedures.cpp -o build/double_procedures.o
+	@$(CC) $(CFLAGS) -c src/double_procedures.cpp -o build/double_procedures.o
 
 mode_parser.o: src/mode_parser.cpp
-	$(CC) $(CFLAGS) -c src/mode_parser.cpp -o build/mode_parser.o
+	@$(CC) $(CFLAGS) -c src/mode_parser.cpp -o build/mode_parser.o
 
 color_output.o: src/color_output.cpp
-	$(CC) $(CFLAGS) -c src/color_output.cpp -o build/color_output.o
+	@$(CC) $(CFLAGS) -c src/color_output.cpp -o build/color_output.o
 
 
 run:
