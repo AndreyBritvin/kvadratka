@@ -1,7 +1,7 @@
 /**
  * @file test_data.h
  * @author Andrey Britvin
- * @brief
+ * @brief Тестовые данные для unit теста solve_equation
  * @version 1.0
  * @date 2024-08-23
  *
@@ -16,7 +16,7 @@
 #include "square_unit_test.h"
 
 /**
- * @brief
+ * @brief Тестовые данные из структуры коэффициентов и решения
  *
  */
 static struct unit_test_input all_tests[] =
