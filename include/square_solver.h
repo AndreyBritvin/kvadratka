@@ -20,7 +20,7 @@
 
 #include "double_procedures.h"
 
-#include "my_assert.h"
+#include "my_macros.h"
 
 /**
  * @brief Число корней

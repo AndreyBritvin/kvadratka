@@ -16,7 +16,7 @@
 #include <string.h>
 #include "square_solver.h"
 #include "square_unit_test.h"
-#include "my_assert.h"
+#include "my_macros.h"
 
 /**
  * @brief Функция эквивалентности строки хотя бы одной другой

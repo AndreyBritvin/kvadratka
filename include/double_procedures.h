@@ -14,7 +14,7 @@
 
 #include <stdbool.h>
 #include <math.h>
-#include "my_assert.h"
+#include "my_macros.h"
 
 /**
  * @brief Функция сравнения двух чисел типа double с учётом возможных погрешностей
