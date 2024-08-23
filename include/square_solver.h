@@ -1,7 +1,7 @@
 /**
  * @file square_solver.h
  * @author Andrey Britvin
- * @brief
+ * @brief Решение уравнения
  * @version 1.0
  * @date 2024-08-23
  *
@@ -23,7 +23,7 @@
 #include "my_assert.h"
 
 /**
- * @brief
+ * @brief Число корней
  *
  */
 enum number_of_roots
@@ -34,10 +34,6 @@ enum number_of_roots
     TWO_ROOTS  =  2,
 };
 
-/**
- * @brief
- *
- */
 struct solution
 {
     int n_roots;
@@ -45,10 +41,6 @@ struct solution
     double x2;
 };
 
-/**
- * @brief
- *
- */
 struct coefficient
 {
     double a;
@@ -58,6 +50,7 @@ struct coefficient
 
 /**
  * @brief Печать приветствия пользователю
+
  */
 void print_greeting();
 
@@ -69,42 +62,45 @@ void print_greeting();
 void get_coefficients(struct coefficient *coef);
 
 /**
- * @brief Решает квадратное уравнение
+ * @brief Решение квадратное уравнение
  *
- * @param coef
- * @param sol
+ * @param coef Структура с коэффициентами
+ * @param sol Структура, куда будет записано решение
+ *
+ * @warning Если coef.a == 0 или некорректный ввод (inf или nan), то сработает assert
  */
 void solve_quadratic_equation(const struct coefficient coef, struct solution *sol);
 
 /**
- * @brief
+ * @brief Решает линейное уравнение, когда coef.a == 0
  *
- * @param coef
- * @param sol
+ * @param coef Структура с коэффициентами уравнения
+ * @param sol Структура, куда будет записано решение
  */
 void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 
 /**
- * @brief
+ * @brief Функция, которая определяет тип уравнения и решает его
  *
- * @param coef
- * @param sol
+ * @param coef Структура с коэффициентами уравнения
+ * @param sol Структура, куда будет записано решение
  */
 void solve_equation(const struct coefficient coef, struct solution *sol);
 
 /**
- * @brief
+ * @brief Функция, которая печатает ответ в зависимости от получившегося результата
  *
- * @param coef
- * @param sol
+ * @param coef Структура с коэффициентами уравнения
+ * @param sol Структура с решённым уравнением
  */
 void print_solution(const struct coefficient coef, const struct solution sol);
 
 /**
- * @brief
+ * @brief Функция очистки буффера stdin
  *
- * @param print_buf
+ * @param print_buf true = напечатать содержимое буффера stdin
+ *                 false = уничтожить безвовзратно
  */
-void clear_buffer(_Bool print_buf);
+void clear_buffer(bool print_buf);
 
 #endif // SQUARE_SOLVER_H
