@@ -1,7 +1,7 @@
 /**
  * @file double_procedures.h
  * @author Andrey Britvin
- * @brief
+ * @brief Операции с числами типа double
  * @version 1.0
  * @date 2024-08-23
  *
