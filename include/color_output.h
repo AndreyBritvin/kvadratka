@@ -16,51 +16,45 @@
 #include <stdarg.h>
 
 /**
- * @brief
+ * @brief Создание цветов для print_color
  *
  */
 enum color
 {
-    BLACK,
     RED,
     GREEN,
-    YELLOW,
-    BLUE,
-    PURPLE,
-    CYAN,
-    WHITE,
 };
 
 /**
- * @brief
+ * @brief Собственный цветной вывод
  *
- * @param color
- * @param format
- * @param ...
+ * @param color Номер цвета (color)
+ * @param format Строка для printf
+ * @param ... Переменные для printf
  */
 void print_color(int color, const char * format, ...);
 
 /**
- * @brief Set the color object
+ * @brief Устанаваливает цвет консоли в зависимости от аргумента (color)
  *
- * @param color
+ * @param color Номер цвета
  */
 void set_color(int color);
 
 /**
- * @brief Set the red color object
+ * @brief Устанавливает красный цвет консоли
  *
  */
 void set_red_color();
 
 /**
- * @brief Set the green color object
+ * @brief Устанавливает зелёный цвет консоли
  *
  */
 void set_green_color();
 
 /**
- * @brief
+ * @brief Восстанавливает цвет консоли по умолчанию
  *
  */
 void reset_color();
