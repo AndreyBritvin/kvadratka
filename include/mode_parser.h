@@ -1,3 +1,14 @@
+/**
+ * @file mode_parser.h
+ * @author Andrey Britvin
+ * @brief
+ * @version 1.0
+ * @date 2024-08-23
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+
 #ifndef MODE_PARSER_H__
 #define MODE_PARSER_H__
 

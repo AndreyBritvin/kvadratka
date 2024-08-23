@@ -15,7 +15,7 @@
 #include <stdio.h>
 
 /**
- * @brief Custom assert function
+ * @brief Custom assert macros
  *
  */
 

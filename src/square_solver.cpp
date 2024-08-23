@@ -48,6 +48,8 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
     MY_ASSERT(isfinite(discriminant));
     MY_ASSERT(!isnan(discriminant));
 
+    MY_ASSERT(!compare_equal_double(coef.a, 0));
+
     double first_add = (-coef.b) / (2 * coef.a);
 
     if (compare_equal_double(discriminant, 0))

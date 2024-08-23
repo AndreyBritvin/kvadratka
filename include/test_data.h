@@ -1,11 +1,25 @@
+/**
+ * @file test_data.h
+ * @author Andrey Britvin
+ * @brief
+ * @version 1.0
+ * @date 2024-08-23
+ *
+ * @copyright Copyright (c) 2024
+ *
+ */
+
 #ifndef TEST_DATA_H___
 #define TEST_DATA_H___
 
 #include "square_solver.h"
 #include "square_unit_test.h"
 
-
-struct unit_test_input all_tests[] =
+/**
+ * @brief
+ *
+ */
+static struct unit_test_input all_tests[] =
 {
     //a, b, c                 n_roots,   x1,      x2
     {{   0,    0,          0},    {INF_ROOTS ,  0,       0}},
