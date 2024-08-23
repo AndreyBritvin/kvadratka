@@ -77,7 +77,7 @@ void solve_from_terminal()
 
 void version()
 {
-    printf("I dont know which version it is\n");
+    printf("Version 1.0\n");
 }
 
 bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *str2)
