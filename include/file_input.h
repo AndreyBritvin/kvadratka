@@ -14,6 +14,7 @@
 #define FILE_INPUT_H_
 
 #include <stdio.h>
+#include <errno.h>
 #include "square_unit_test.h"
 
 enum file_status

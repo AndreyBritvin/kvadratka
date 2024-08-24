@@ -113,10 +113,22 @@ void tests_result(const char filename[])
 
     struct unit_test_input to_test[MAX_UNIT_TEST_COUNT] = {};
 
-    open_file(&fp, filename);
+
+    if(int error_num = open_file(&fp, filename))
+    {
+        printf("Error: %s\n", strerror(error_num));
+
+        exit(EXIT_FAILURE);
+    }
+
     unsigned int TEST_COUNT = file_unit_test_output(&fp, to_test);
 
-    close_file(&fp, filename);
+    if(int error_num = close_file(&fp, filename))
+    {
+        printf("Error: %s\n", strerror(error_num));
+
+        exit(EXIT_FAILURE);
+    }
 
     printf("Неверно пройденных тестов: %d/%u\n", run_all_tests(all_tests, TEST_COUNT), TEST_COUNT);
 }

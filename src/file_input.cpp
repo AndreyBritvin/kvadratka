@@ -11,7 +11,7 @@ int open_file(FILE **fp, const char filename[])
     {
         fprintf(stderr, "Error in opening file: %s\n", filename);
 
-        return FILE_UNSUCCESS;
+        return errno;
     }
 
     return FILE_SUCCESS;
@@ -27,7 +27,7 @@ int close_file(FILE **fp, const char filename[])
     {
         fprintf(stderr, "Error in closing file: %s", filename);
 
-        return FILE_UNSUCCESS;
+        return errno;
     }
 
     return FILE_SUCCESS;
