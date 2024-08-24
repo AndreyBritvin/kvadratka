@@ -14,6 +14,7 @@ int open_file(FILE **fp, char * filename)
     return FILE_SUCCESS;
 }
 
+
 int close_file(FILE *fp,  char filename[])
 {
     if (fclose(fp))
@@ -25,6 +26,7 @@ int close_file(FILE *fp,  char filename[])
 
     return FILE_SUCCESS;
 }
+
 
 char * read_line(FILE *fp)
 {
