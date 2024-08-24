@@ -14,6 +14,7 @@
 #define FILE_INPUT_H_
 
 #include <stdio.h>
+#include "square_unit_test.h"
 
 enum file_status
 {
@@ -21,8 +22,10 @@ enum file_status
     FILE_UNSUCCESS,
 };
 
-int open_file(FILE *fp, char filename[]);
-int close_file(FILE *fp,  char filename[]);
+int open_file(FILE **fp, char filename[]);
+int close_file(FILE **fp,  char filename[]);
+
+int file_unit_test_output(FILE **fp, struct unit_test_input test_input[]);
 
 char * read_line(FILE *fp);
 

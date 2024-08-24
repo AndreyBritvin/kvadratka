@@ -1,8 +1,11 @@
 #include "file_input.h"
 
-int open_file(FILE **fp, char * filename)
-{
 
+
+int open_file(FILE **fp, char filename[])
+{
+    MY_ASSERT(fp != NULL);
+    MY_ASSERT(filename != NULL);
 
     if ((*fp = fopen(filename, "r")) == NULL)
     {
@@ -15,9 +18,12 @@ int open_file(FILE **fp, char * filename)
 }
 
 
-int close_file(FILE *fp,  char filename[])
+int close_file(FILE **fp,  char filename[])
 {
-    if (fclose(fp))
+    MY_ASSERT(fp != NULL);
+    MY_ASSERT(filename != NULL);
+
+    if (fclose(*fp))
     {
         fprintf(stderr, "Error in closing file: %s", filename);
 
@@ -27,6 +33,41 @@ int close_file(FILE *fp,  char filename[])
     return FILE_SUCCESS;
 }
 
+int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
+{
+    MY_ASSERT(fp != NULL);
+    MY_ASSERT(test_input != NULL);
+
+
+    int test_count = 0;
+
+    struct unit_test_input str_to_app = {{0, 0, 0}, {0, 0, 0}}; // struct to append
+
+    char ch[128] = {};
+    // while(fscanf(*fp, "%d", str_to_app.expected_solution.n_roots) != EOF && test_count < 9)
+
+
+    //                  a   b   c   nR  x1  x2
+    while (fscanf(*fp, "%lf %lf %lf %d %lf %lf",             \
+                    &str_to_app.coefficients.a,              \
+                    &str_to_app.coefficients.b,              \
+                    &str_to_app.coefficients.c,              \
+                    &str_to_app.expected_solution.n_roots,   \
+                    &str_to_app.expected_solution.x1,        \
+                    &str_to_app.expected_solution.x2         \
+                    ) != EOF)
+
+    {
+        //printf("%d", str_to_app.expected_solution.n_roots);
+        test_input[test_count] = str_to_app;
+
+        str_to_app = {};
+
+        test_count++;
+    }
+
+    return test_count;
+}
 
 char * read_line(FILE *fp)
 {
