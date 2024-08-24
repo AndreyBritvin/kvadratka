@@ -16,7 +16,7 @@
 
 ---
 
-<p align="center"> Few lines describing your project.
+<p align="center"> Решение квадратных уравнений.
     <br>
 </p>
 
@@ -34,81 +34,59 @@
 
 ## 🧐 About <a name = "about"></a>
 
-This programm solves equation ax^2+bx+c=0 using coefficients a, b, c.
+Эта программа решает квадратные уравнения вида ax^2+bx+c=0 используя коэффициенты a, b, c.
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
-
-### Prerequisites
-
-What things you need to install the software and how to install them.
-
-```
-Give examples
-```
-
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running.
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo.
+Склонируйте репозиторий и запустите Makefile (подробнее в [Deployment](#Deployment)
 
 ## 🔧 Running the tests <a name = "tests"></a>
 
-Explain how to run the automated tests for this system.
 
-### Break down into end to end tests
+Создайте файл file.txt где будут находиться данные об unit тестах (не более 20 тестов) для проверки функции квадратного уравнения или воспользуйтесь готовым файлом test_data/unit_test_data.txt
 
-Explain what these tests test and why
-
+Запустить тест:
 ```
-Give an example
+a.out -t file.txt
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## 🎈 Usage <a name="usage"></a>
 
-Add notes about how to use the system.
+Чтобы решить квадратное уравнение введите
+
+```
+a.out -s
+```
+
+И следуйте инструкциям по вводу коэффициентов
 
 ## 🚀 Deployment <a name = "deployment"></a>
 
-Add additional notes about how to deploy this on a live system.
+Убедитесь, что Makefile соответствует настройкам вашей системы
 
-## ⛏️ Built Using <a name = "built_using"></a>
+Введите
+```
+make
+```
+Для создания исполняемого файла a.out (или a.exe для Windows 👎)
 
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+### Doxygen setting
+Для визуализации структуры проекта установите и запустите Doxygen:
+```
+sudo apt-get install dosygen
+```
+Перейдите в папку проекта и введите
+```
+doxygen Doxyfile
+```
 
 ## ✍️ Authors <a name = "authors"></a>
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+- [@AndreyBritvin](https://github.com/AndreyBritvin) - основная работа
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+- Спасибо [Деду](https://github.com/ded32) и ментору за летку
