@@ -16,7 +16,13 @@ void parse_mode(const char programm_name[], const char mode[], const int flag_nu
 
     static bool is_next_filename = false;
 
-    if (cmp_str_to_multiple(mode, "-v", "--version"))
+    if (is_next_filename)
+    {
+        tests_result(mode);
+        is_next_filename = false;
+    }
+
+    else if (cmp_str_to_multiple(mode, "-v", "--version"))
     {
         version();
     }
@@ -33,12 +39,6 @@ void parse_mode(const char programm_name[], const char mode[], const int flag_nu
             wrong_flag(programm_name, mode);
         }
         is_next_filename = true;
-    }
-
-    else if (is_next_filename)
-    {
-        tests_result(mode);
-        is_next_filename = false;
     }
 
     else if (cmp_str_to_multiple(mode, "-h", "--help"))
@@ -129,8 +129,8 @@ void help()
             "-v --version\n"
            "Print programm version\n\n"
 
-           "-t --test\n"
-           "Run unit tests\n\n"
+           "-t --test [filename]\n"
+           "Run unit tests from file\n\n"
 
            "-s --solve\n"
            "Solves ax^2+bx+c=0. Enter coeefficients\n\n");
