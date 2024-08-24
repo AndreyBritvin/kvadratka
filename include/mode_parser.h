@@ -17,6 +17,7 @@
 #include "square_solver.h"
 #include "square_unit_test.h"
 #include "my_macros.h"
+#include "file_input.h"
 
 /**
  * @brief Функция эквивалентности строки хотя бы одной другой
@@ -36,8 +37,9 @@ bool cmp_str_to_multiple(const char *first_str_to_cmp, const char *str1, const c
  *
  * @param programm_name Имя программы, argv[0]
  * @param mode Флаг, который надо обработать
+ * @param num_current_flag номер текущего по счёту флага
  */
-void parse_mode(const char programm_name[], const char mode[]);
+void parse_mode(const char programm_name[], const char mode[], const int num_current_flag, const int argc);
 
 /**
  * @brief Печать информации о неправильном флаге
@@ -62,8 +64,9 @@ void version();
 /**
  * @brief Печать информации по результатам теста
  *
+ * @param filename Имя файла, откуда будут взяты данные для юнит теста
  */
-void tests_result();
+void tests_result(const char filename[]);
 
 /**
  * @brief Печать информации при флаге -h или --help

@@ -27,6 +27,8 @@ enum check_status
     SOLUTION_INCORRECT,
 };
 
+const unsigned int MAX_UNIT_TEST_COUNT = 20;
+
 /**
  * @brief Запускает единичный unit тест
  *

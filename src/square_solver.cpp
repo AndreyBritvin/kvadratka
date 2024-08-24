@@ -6,7 +6,7 @@ void get_coefficients(struct coefficient *coef)
 
     int ret = 0;
 
-    while ( (ret = scanf("%lf %lf %lf", &coef->a, &coef->b, &coef->c)) != 3)
+    while ( (ret = scanf("%lf %lf %lf", &coef->a, &coef->b, &coef->c)) != 3 && ret != EOF)
     {
         clear_buffer(true);
 
@@ -144,7 +144,7 @@ void print_greeting()
     printf("Начните вводить коэффициенты c новой строки\n");
 }
 
-void clear_buffer(_Bool print_buf)
+void clear_buffer(bool print_buf)
 {
     int ch = 0;
     while ((ch = getchar()) != '\n' && ch != EOF)

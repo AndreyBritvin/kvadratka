@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 
     for (int arg_num = 1; arg_num < argc; arg_num++)
     {
-        parse_mode(argv[0], argv[arg_num]);
+        parse_mode(argv[0], argv[arg_num], arg_num + 1, argc);
     }
 
     return 0;
