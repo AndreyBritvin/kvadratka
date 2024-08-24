@@ -10,6 +10,7 @@ int open_file(FILE **fp, char * filename)
 
         return FILE_UNSUCCESS;
     }
+
     return FILE_SUCCESS;
 }
 
@@ -21,6 +22,7 @@ int close_file(FILE *fp,  char filename[])
 
         return FILE_UNSUCCESS;
     }
+
     return FILE_SUCCESS;
 }
 
