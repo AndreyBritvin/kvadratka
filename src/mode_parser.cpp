@@ -9,10 +9,12 @@ enum mode_index
 };
 
 
-void parse_mode(const char programm_name[], const char mode[])
+void parse_mode(const char programm_name[], const char mode[], const int flag_num, const int argc)
 {
     MY_ASSERT(programm_name != NULL);
     MY_ASSERT(mode != NULL);
+
+    static bool is_next_filename = false;
 
     if (cmp_str_to_multiple(mode, "-v", "--version"))
     {
@@ -26,7 +28,17 @@ void parse_mode(const char programm_name[], const char mode[])
 
     else if (cmp_str_to_multiple(mode, "-t", "--test"))
     {
-        tests_result();
+        if (flag_num == argc)
+        {
+            wrong_flag(programm_name, mode);
+        }
+        is_next_filename = true;
+    }
+
+    else if (is_next_filename)
+    {
+        tests_result(mode);
+        is_next_filename = false;
     }
 
     else if (cmp_str_to_multiple(mode, "-h", "--help"))
@@ -95,10 +107,18 @@ bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *s
 }
 
 
-void tests_result()
+void tests_result(const char filename[])
 {
-    unsigned int MAX_TEST_COUNT = (unsigned int) sizeof(all_tests) / sizeof(struct unit_test_input);
-    printf("Неверно пройденных тестов: %d\n", run_all_tests(all_tests, MAX_TEST_COUNT));
+    FILE *fp; // File to unit test data
+
+    struct unit_test_input to_test[MAX_UNIT_TEST_COUNT] = {};
+
+    open_file(&fp, filename);
+    unsigned int TEST_COUNT = file_unit_test_output(&fp, to_test);
+
+    close_file(&fp, filename);
+
+    printf("Неверно пройденных тестов: %d/%u\n", run_all_tests(all_tests, TEST_COUNT), TEST_COUNT);
 }
 
 void help()
@@ -115,4 +135,3 @@ void help()
            "-s --solve\n"
            "Solves ax^2+bx+c=0. Enter coeefficients\n\n");
 }
-

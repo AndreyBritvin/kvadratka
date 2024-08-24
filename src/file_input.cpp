@@ -2,7 +2,7 @@
 
 
 
-int open_file(FILE **fp, char filename[])
+int open_file(FILE **fp, const char filename[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(filename != NULL);
@@ -18,7 +18,7 @@ int open_file(FILE **fp, char filename[])
 }
 
 
-int close_file(FILE **fp,  char filename[])
+int close_file(FILE **fp, const char filename[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(filename != NULL);
@@ -33,19 +33,15 @@ int close_file(FILE **fp,  char filename[])
     return FILE_SUCCESS;
 }
 
-int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
+unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(test_input != NULL);
 
 
-    int test_count = 0;
+    unsigned int test_count = 0;
 
     struct unit_test_input str_to_app = {{0, 0, 0}, {0, 0, 0}}; // struct to append
-
-    char ch[128] = {};
-    // while(fscanf(*fp, "%d", str_to_app.expected_solution.n_roots) != EOF && test_count < 9)
-
 
     //                  a   b   c   nR  x1  x2
     while (fscanf(*fp, "%lf %lf %lf %d %lf %lf",             \
@@ -58,7 +54,6 @@ int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
                     ) != EOF)
 
     {
-        //printf("%d", str_to_app.expected_solution.n_roots);
         test_input[test_count] = str_to_app;
 
         str_to_app = {};
@@ -67,9 +62,4 @@ int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
     }
 
     return test_count;
-}
-
-char * read_line(FILE *fp)
-{
-    return "";
 }

@@ -22,11 +22,10 @@ enum file_status
     FILE_UNSUCCESS,
 };
 
-int open_file(FILE **fp, char filename[]);
-int close_file(FILE **fp,  char filename[]);
+int open_file(FILE **fp, const char filename[]);
+int close_file(FILE **fp, const char filename[]);
 
-int file_unit_test_output(FILE **fp, struct unit_test_input test_input[]);
+unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[]);
 
-char * read_line(FILE *fp);
 
 #endif // FILE_INPUT_H_
