@@ -1,6 +1,7 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=200px height=200px src="https://i.imgur.com/6wj0hh6.jpg" alt="Project logo"></a>
+ <img width=200px height=200px src="pictures/Logo.svg
+" alt="Project logo"></a>
 </p>
 
 <h3 align="center">Kvadratka</h3>
@@ -76,7 +77,7 @@ make
 ### Doxygen setting
 Для визуализации структуры проекта установите и запустите Doxygen:
 ```
-sudo apt-get install dosygen
+sudo apt-get install doxygen
 ```
 Перейдите в папку проекта и введите
 ```
