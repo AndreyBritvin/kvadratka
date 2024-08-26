@@ -43,6 +43,7 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     struct unit_test_input str_to_app = {{0, 0, 0}, {0, 0, 0}}; // struct to append
 
+    //temp vars to avoid half_structure errors
     double temp_a = 0, temp_b = 0, temp_c = 0, temp_x1 = 0, temp_x2 = 0;
     int temp_n_roots = 0;
 
