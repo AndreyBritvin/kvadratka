@@ -1,7 +1,7 @@
 /**
  * @file my_assert.h
  * @author Andrey Britvin
- * @brief Custom assert function
+ * @brief Custom macroses
  * @version 1.0
  * @date 2024-08-23
  *
