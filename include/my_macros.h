@@ -23,7 +23,7 @@
  * @brief Custom macros
  *
  */
-
+#ifndef N_DEBUG
 #define MY_ASSERT(EXPR); { if (!(EXPR))                                         \
                             {                                                   \
                             fprintf(stderr, "\033[0;31m"                        \
@@ -33,6 +33,12 @@
                                     exit(EXIT_FAILURE);                         \
                             }                                                   \
                          }
+
+#else
+#define MY_ASSERT(EXPR);
+
+#endif // N_DEBUG
+
 
 /**
  * @brief Тренировка стандарта IEEE754
