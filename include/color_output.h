@@ -1,7 +1,7 @@
 /**
  * @file color_output.h
  * @author Andrey Britvin
- * @brief
+ * @brief Собственный цветной ввод вывод
  * @version 1.0
  * @date 2024-08-23
  *
