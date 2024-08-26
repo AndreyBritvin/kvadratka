@@ -98,6 +98,7 @@ bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *s
     MY_ASSERT(str1 != NULL);
     MY_ASSERT(str2 != NULL);
 
+
     if (!strcmp(str_to_cmp, str1) || !strcmp(str_to_cmp, str2))
     {
         return true;
@@ -112,7 +113,6 @@ void tests_result(const char filename[])
     FILE *fp; // File to unit test data
 
     struct unit_test_input to_test[MAX_UNIT_TEST_COUNT] = {};
-
 
     if(int error_num = open_file(&fp, filename))
     {

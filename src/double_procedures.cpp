@@ -3,7 +3,7 @@
 bool compare_equal_double(double d1, double d2)
 {
     const double EPSILON = 1e-7;
-    return (fabs(d1 - d2) < EPSILON) ? 1 : 0;
+    return fabs(d1 - d2) < EPSILON;
 }
 
 void set_minimum_solution(double *solution_x1, double *solution_x2)
