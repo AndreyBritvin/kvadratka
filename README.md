@@ -82,7 +82,10 @@ sudo apt-get install doxygen
 ```
 doxygen Doxyfile
 ```
-
+Для визуализации графов зависимостей необходимо установить graphviz:
+```
+sudo apt-get install graphviz
+```
 ## ✍️ Authors <a name = "authors"></a>
 
 - [@AndreyBritvin](https://github.com/AndreyBritvin) - основная работа
