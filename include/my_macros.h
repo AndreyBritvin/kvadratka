@@ -35,7 +35,7 @@
                          }
 
 /**
- * @brief
+ * @brief Тренировка стандарта IEEE754
  *
  */
 #define MY_ISNAN_VAR(NUM) ( ((*(unsigned long long *) &(NUM)) << 1 >> 53) == 0x7FF      \
@@ -43,7 +43,7 @@
                          ? true : false)
 
 /**
- * @brief
+ * @brief Тренировка стандарта IEEE754
  *
  */
 #define MY_ISFINITE_VAR(NUM) ( ((*(unsigned long long *) &(NUM)) << 1 >> 53) == 0x7FF   \
@@ -51,13 +51,18 @@
                             ? true : false)
 
 
-#define MY_ISFINITE(NUM) (MY_ISNAN(NUM * 0) ? false : true)
+/**
+ * @brief Тренировка макросов
+ *
+ */
+#define MY_ISFINITE(NUM) (MY_ISNAN((NUM) * 0) ? false : true)
 
 static bool MY_ISNAN(double NUM);
 
 /**
- * @brief
+ * @brief Тренировка макроса ISNAN
  *
+ * @warning Предупреждение компилятора выключено намеренно
  */
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wfloat-equal"
