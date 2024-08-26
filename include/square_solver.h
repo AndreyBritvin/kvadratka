@@ -34,18 +34,26 @@ enum number_of_roots
     TWO_ROOTS  =  2,
 };
 
+/**
+ * @brief Структура с решением уравнения
+ *
+ */
 struct solution
 {
-    int n_roots;
-    double x1;
-    double x2;
+    int n_roots; /// Число корней
+    double x1;   /// Первый корень
+    double x2;   /// Второй корень
 };
 
+/**
+ * @brief Структура с коэффициентами для квадратного уравнения
+ *
+ */
 struct coefficient
 {
-    double a;
-    double b;
-    double c;
+    double a; /// Квадратный коэффициент
+    double b; /// Линейный коэффициент
+    double c; /// Свободный коэффициент
 };
 
 /**
