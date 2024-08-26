@@ -15,6 +15,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 
+#define RED_COLOR "\033[0;31m"
+#define GREEN_COLOR "\033[0;32m"
+#define RESET_COLOR "\033[0m"
+
 /**
  * @brief Создание цветов для print_color
  *
@@ -31,8 +35,10 @@ enum color
  * @param color Номер цвета (color)
  * @param format Строка для printf
  * @param ... Переменные для printf
+ *
+ * @return То же самое, что возвращает printf
  */
-void print_color(int color, const char * format, ...);
+int print_color(int color, const char * format, ...);
 
 /**
  * @brief Устанаваливает цвет консоли в зависимости от аргумента (color)

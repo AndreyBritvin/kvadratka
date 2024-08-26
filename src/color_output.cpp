@@ -2,17 +2,19 @@
 
 // vprintf, vargs
 
-void print_color(int color, const char * format, ...)
+int print_color(int color, const char * format, ...)
 {
     va_list args;
     va_start (args, format);
 
     set_color(color);
 
-    vprintf(format, args);
+    int ret_val = vprintf(format, args);
     reset_color();
 
     va_end (args);
+
+    return ret_val;
 }
 
 void set_color(int color)
@@ -41,15 +43,15 @@ void set_color(int color)
 
 void reset_color()
 {
-    printf("\033[0m");
+    printf(RESET_COLOR);
 }
 
 void set_red_color()
 {
-    printf("\033[0;31m");
+    printf(RED_COLOR);
 }
 
 void set_green_color()
 {
-    printf("\033[0;32m");
+    printf(GREEN_COLOR);
 }
