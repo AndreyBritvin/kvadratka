@@ -2,12 +2,12 @@
 
 
 
-int open_file(FILE **fp, const char filename[])
+int open_file(FILE *fp, const char filename[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(filename != NULL);
 
-    if ((*fp = fopen(filename, "r")) == NULL)
+    if ((fp = fopen(filename, "r")) == NULL)
     {
         fprintf(stderr, "Error in opening file: %s\n", filename);
 
@@ -18,12 +18,12 @@ int open_file(FILE **fp, const char filename[])
 }
 
 
-int close_file(FILE **fp, const char filename[])
+int close_file(FILE *fp, const char filename[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(filename != NULL);
 
-    if (fclose(*fp))
+    if (fclose(fp))
     {
         fprintf(stderr, "Error in closing file: %s", filename);
 
@@ -33,7 +33,7 @@ int close_file(FILE **fp, const char filename[])
     return FILE_SUCCESS;
 }
 
-unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
+unsigned int file_unit_test_output(FILE *fp, struct unit_test_input test_input[])
 {
     MY_ASSERT(fp != NULL);
     MY_ASSERT(test_input != NULL);
@@ -46,7 +46,7 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
     int ret = 0;
 
     //                  a   b   c   nR  x1  x2
-    while ((ret = fscanf(*fp, "%lf %lf %lf %d %lf %lf\n",             \
+    while ((ret = fscanf(fp, "%lf %lf %lf %d %lf %lf\n",             \
                     &str_to_app.coefficients.a,              \
                     &str_to_app.coefficients.b,              \
                     &str_to_app.coefficients.c,              \
