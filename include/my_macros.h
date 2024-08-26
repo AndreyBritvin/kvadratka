@@ -13,6 +13,7 @@
 #define MY_ASSERT_H_
 
 #include <stdio.h>
+#include "color_output.h"
 
 #define DISABLE_WARNING_PUSH _Pragma("GCC diagnostic push")
 #define DISABLE_WARNING_FLOAT_EQUAL   _Pragma("GCC diagnostic ignored \"-Wfloat-equal\"")
@@ -60,20 +61,24 @@
 /**
  * @brief Тренировка макросов
  *
+#include ""
  */
 #define MY_ISFINITE(NUM) (MY_ISNAN((NUM) * 0) ? false : true)
-
-static bool MY_ISNAN(double NUM);
 
 /**
  * @brief Тренировка макроса ISNAN
  *
  * @warning Предупреждение компилятора выключено намеренно
  */
+static bool MY_ISNAN(double NUM);
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wfloat-equal"
 #pragma GCC diagnostic ignored "-Wunused-function"
 static bool MY_ISNAN(double NUM) {return ((NUM) == (NUM)) ? false : true;}
 #pragma GCC diagnostic pop
+
+#define print_error(STR,...); fprintf(stderr, RED_COLOR STR RESET_COLOR, __VA_ARGS__);
+
 
 #endif // MY_ASSERT_H_

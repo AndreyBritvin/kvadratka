@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include "square_unit_test.h"
+#include "my_macros.h"
 
 enum file_status
 {
@@ -48,6 +49,7 @@ int close_file(FILE **fp, const char filename[]);
  *
  * @param[out] fp Указатель на файловый указатель
  * @param[in] test_input Массив структур, в который необходимо ввести данные
+ *
  * @return unsigned int Количество тестов которые необходимо пройти
  */
 unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[]);

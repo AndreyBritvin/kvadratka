@@ -74,8 +74,8 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     if (ret != EOF && ret != 6)
     {
-        fprintf(stderr, "Smth wrong in input data test #%u, ret = %d\n"
-                        "All tests before scanned success\n", test_count, ret);
+        print_error("Smth wrong in input data test #%u, ret = %d\n"                 \
+                    "All tests before scanned success\n", test_count, ret);
     }
 
     return test_count;
