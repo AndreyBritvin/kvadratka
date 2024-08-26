@@ -31,7 +31,7 @@ enum file_status
  * @return int FILE_SUCCESS, если всё ОК
  *             errno, если возникла ошибка
  */
-int open_file(FILE *fp, const char filename[]);
+int open_file(FILE **fp, const char filename[]);
 
 /**
  * @brief Закрывает файл и возвращает статус закрытия
@@ -41,7 +41,7 @@ int open_file(FILE *fp, const char filename[]);
  * @return int FILE_SUCCESS, если всё ОК
  *             errno, если возникла ошибка
  */
-int close_file(FILE *fp, const char filename[]);
+int close_file(FILE **fp, const char filename[]);
 
 /**
  * @brief Записывает в массив структур данные из файла для unit теста
@@ -50,7 +50,7 @@ int close_file(FILE *fp, const char filename[]);
  * @param test_input Массив структур, в который необходимо ввести данные
  * @return unsigned int Количество тестов которые необходимо пройти
  */
-unsigned int file_unit_test_output(FILE *fp, struct unit_test_input test_input[]);
+unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[]);
 
 
 #endif // FILE_INPUT_H_
