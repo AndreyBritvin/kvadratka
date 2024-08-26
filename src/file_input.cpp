@@ -43,19 +43,27 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     struct unit_test_input str_to_app = {{0, 0, 0}, {0, 0, 0}}; // struct to append
 
+    double temp_a = 0, temp_b = 0, temp_c = 0, temp_x1 = 0, temp_x2 = 0;
+    int temp_n_roots = 0;
+
     int ret = 0;
 
     //                  a   b   c   nR  x1  x2
     while ((ret = fscanf(*fp, "%lf %lf %lf %d %lf %lf\n",             \
-                    &str_to_app.coefficients.a,              \
-                    &str_to_app.coefficients.b,              \
-                    &str_to_app.coefficients.c,              \
-                    &str_to_app.expected_solution.n_roots,   \
-                    &str_to_app.expected_solution.x1,        \
-                    &str_to_app.expected_solution.x2         \
+                    &temp_a, &temp_b, &temp_c,                        \
+                    &temp_n_roots, &temp_x1, &temp_x2                 \
                     )) != EOF && ret == 6)
 
     {
+        str_to_app.coefficients.a = temp_a;
+        str_to_app.coefficients.b = temp_b;
+        str_to_app.coefficients.c = temp_c;
+
+        str_to_app.expected_solution.x1 =      temp_x1;
+        str_to_app.expected_solution.x2 =      temp_x2;
+        str_to_app.expected_solution.n_roots = temp_n_roots;
+
+
         test_input[test_count] = str_to_app;
 
         str_to_app = {};
