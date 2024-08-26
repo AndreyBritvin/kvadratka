@@ -5,11 +5,13 @@
 
 #include "mode_parser.h"
 
-int main(int argc, char *argv[])
+int main(const int argc, const char *argv[])
 {
     if (argc == 1)
     {
-        wrong_flag(argv[0], "");
+        printf("Для помощи введите: %s -h\n\n", argv[0]);
+        parse_mode(argv[0], "-s", 1, argc);
+
     }
 
     for (int arg_num = 1; arg_num < argc; arg_num++)
