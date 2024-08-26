@@ -2,12 +2,6 @@
 
 #include "test_data.h"
 
-enum mode_index
-{
-    MODE_1,
-    MODE_2,
-};
-
 
 void parse_mode(const char programm_name[], const char mode[], const int flag_num, const int argc)
 {
