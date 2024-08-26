@@ -32,9 +32,9 @@ enum color
 /**
  * @brief Собственный цветной вывод
  *
- * @param color Номер цвета (color)
- * @param format Строка для printf
- * @param ... Переменные для printf
+ * @param[in] color Номер цвета (color)
+ * @param[in] format Строка для printf
+ * @param[in] ... Переменные для printf
  *
  * @return То же самое, что возвращает printf
  */
@@ -43,7 +43,7 @@ int print_color(int color, const char * format, ...);
 /**
  * @brief Устанаваливает цвет консоли в зависимости от аргумента (color)
  *
- * @param color Номер цвета
+ * @param[in] color Номер цвета
  */
 void set_color(int color);
 

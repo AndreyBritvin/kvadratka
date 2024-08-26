@@ -22,9 +22,9 @@
 /**
  * @brief Функция эквивалентности строки хотя бы одной другой
  *
- * @param first_str_to_cmp Строка, которую надо проверить
- * @param str1 Одно из возможных соответствий
- * @param str2 Второе из возможных соответствий
+ * @param[in] first_str_to_cmp Строка, которую надо проверить
+ * @param[in] str1 Одно из возможных соответствий
+ * @param[in] str2 Второе из возможных соответствий
  * @return true Если str1 или str2 соответствуют first_str_to_cmp
  * @return false Если str1 или str2 НЕ соответствуют first_str_to_cmp
  *
@@ -35,17 +35,17 @@ bool cmp_str_to_multiple(const char *first_str_to_cmp, const char *str1, const c
 /**
  * @brief Функция выбора режима в зависимости от выбранного флага
  *
- * @param programm_name Имя программы, argv[0]
- * @param mode Флаг, который надо обработать
- * @param num_current_flag номер текущего по счёту флага
+ * @param[in] programm_name Имя программы, argv[0]
+ * @param[in] mode Флаг, который надо обработать
+ * @param[in] num_current_flag номер текущего по счёту флага
  */
 void parse_mode(const char programm_name[], const char mode[], const int num_current_flag, const int argc);
 
 /**
  * @brief Печать информации о неправильном флаге
  *
- * @param programm_name Имя файла argv[0]
- * @param wrong_mode Неправильный флаг, о котором надо сообщить
+ * @param[in] programm_name Имя файла argv[0]
+ * @param[in] wrong_mode Неправильный флаг, о котором надо сообщить
  */
 void wrong_flag(const char programm_name[], const char wrong_mode[]);
 
@@ -64,7 +64,7 @@ void version();
 /**
  * @brief Печать информации по результатам теста
  *
- * @param filename Имя файла, откуда будут взяты данные для юнит теста
+ * @param[in] filename Имя файла, откуда будут взяты данные для юнит теста
  */
 void tests_result(const char filename[]);
 

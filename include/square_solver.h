@@ -65,15 +65,15 @@ void print_greeting();
 /**
  * @brief Получение значений трёх коэффициентов в структуре
  *
- * @param coef структура, в которую необходимо считать коэффициенты
+ * @param[out] coef структура, в которую необходимо считать коэффициенты
  */
 void get_coefficients(struct coefficient *coef);
 
 /**
  * @brief Решение квадратное уравнение
  *
- * @param coef Структура с коэффициентами
- * @param sol Структура, куда будет записано решение
+ * @param[in] coef Структура с коэффициентами
+ * @param[out] sol Структура, куда будет записано решение
  *
  * @warning Если coef.a == 0 или некорректный ввод (inf или nan), то сработает assert
  */
@@ -82,31 +82,31 @@ void solve_quadratic_equation(const struct coefficient coef, struct solution *so
 /**
  * @brief Решает линейное уравнение, когда coef.a == 0
  *
- * @param coef Структура с коэффициентами уравнения
- * @param sol Структура, куда будет записано решение
+ * @param[in] coef Структура с коэффициентами уравнения
+ * @param[out] sol Структура, куда будет записано решение
  */
 void solve_linear_equation(const struct coefficient coef, struct solution *sol);
 
 /**
  * @brief Функция, которая определяет тип уравнения и решает его
  *
- * @param coef Структура с коэффициентами уравнения
- * @param sol Структура, куда будет записано решение
+ * @param[in] coef Структура с коэффициентами уравнения
+ * @param[out] sol Структура, куда будет записано решение
  */
 void solve_equation(const struct coefficient coef, struct solution *sol);
 
 /**
  * @brief Функция, которая печатает ответ в зависимости от получившегося результата
  *
- * @param coef Структура с коэффициентами уравнения
- * @param sol Структура с решённым уравнением
+ * @param[in] coef Структура с коэффициентами уравнения
+ * @param[out] sol Структура с решённым уравнением
  */
 void print_solution(const struct coefficient coef, const struct solution sol);
 
 /**
  * @brief Функция очистки буффера stdin
  *
- * @param print_buf true = напечатать содержимое буффера stdin
+ * @param[in] print_buf true = напечатать содержимое буффера stdin
  *                 false = уничтожить безвовзратно
  */
 void clear_buffer(bool print_buf);

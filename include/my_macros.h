@@ -35,7 +35,7 @@
                          }
 
 #else
-#define MY_ASSERT(EXPR);
+#define MY_ASSERT(EXPR); ;
 
 #endif // N_DEBUG
 
