@@ -25,7 +25,8 @@
  * @param[in] first_str_to_cmp Строка, которую надо проверить
  * @param[in] str1 Одно из возможных соответствий
  * @param[in] str2 Второе из возможных соответствий
- * @return true Если str1 или str2 соответствуют first_str_to_cmp
+ *
+ * @return true  Если str1 или str2    соответствуют first_str_to_cmp
  * @return false Если str1 или str2 НЕ соответствуют first_str_to_cmp
  *
  * @example  cmp_str_to_multiple(flag, "-v", "--version")

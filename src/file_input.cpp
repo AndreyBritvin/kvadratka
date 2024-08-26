@@ -49,7 +49,7 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     int ret = 0;
 
-    //                  a   b   c   nR  x1  x2
+    //                         a   b   c   nR  x1  x2
     while ((ret = fscanf(*fp, "%lf %lf %lf %d %lf %lf\n",             \
                     &temp_a, &temp_b, &temp_c,                        \
                     &temp_n_roots, &temp_x1, &temp_x2                 \

@@ -34,10 +34,11 @@ const unsigned int MAX_UNIT_TEST_COUNT = 20;
 /**
  * @brief Запускает единичный unit тест
  *
- * @param[in] test_id Номер теста
+ * @param[in] test_id    Номер теста
  * @param[in] test_input Входные данные для теста
  *
- * @return int SOLUTION_CORRECT если успешно, SOLUTION_INCORRECT
+ * @return int SOLUTION_CORRECT   если успешно пройдены тесты,
+ *             SOLUTION_INCORRECT если неуспешно
  */
 int run_test(unsigned int test_id, struct unit_test_input test_input);
 
@@ -45,6 +46,7 @@ int run_test(unsigned int test_id, struct unit_test_input test_input);
  * @brief Запуск всех тестов
  *
  * @param[in] MAX_TEST_COUNT Количество тестов для запуска
+ *
  * @return int Количество неуспешных тестов
  */
 int run_all_tests(struct unit_test_input [], unsigned int MAX_TEST_COUNT);

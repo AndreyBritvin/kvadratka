@@ -32,9 +32,9 @@ enum color
 /**
  * @brief Собственный цветной вывод
  *
- * @param[in] color Номер цвета (color)
+ * @param[in] color  Номер цвета (color)
  * @param[in] format Строка для printf
- * @param[in] ... Переменные для printf
+ * @param[in] ...    Переменные для printf
  *
  * @return То же самое, что возвращает printf
  */

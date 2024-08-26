@@ -21,6 +21,7 @@
  *
  * @param[in] d1 Первое число для сравнения
  * @param[in] d2 Второе число для сравнения
+ *
  * @return bool true, если аргументы равны с точностью до EPSILON
  */
 bool compare_equal_double(double d1, double d2);

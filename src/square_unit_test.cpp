@@ -37,6 +37,7 @@ int run_test(unsigned int test_id, struct unit_test_input input)
                sol_to_check.n_roots, sol_to_check.x1, sol_to_check.x2,
                input.expected_solution.n_roots, input.expected_solution.x1, input.expected_solution.x2);
         }
+
         return SOLUTION_INCORRECT;
     }
 

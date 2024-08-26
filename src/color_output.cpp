@@ -8,7 +8,6 @@ int print_color(int color, const char * format, ...)
     va_start (args, format);
 
     set_color(color);
-
     int ret_val = vprintf(format, args);
     reset_color();
 
