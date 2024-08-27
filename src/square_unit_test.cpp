@@ -51,6 +51,40 @@ int run_all_tests(struct unit_test_input tests[], unsigned int MAX_TEST_COUNT)
 }
 
 
+void file_tests_result(const char filename[])
+{
+    #ifndef PROGRAMM_UNIT_TEST
+
+    FILE *file_ptr = NULL; // File to unit test data
+
+    struct unit_test_input to_test[MAX_UNIT_TEST_COUNT] = {};
+
+    if (int error_num = open_file(&file_ptr, filename))
+    {
+        printf("Error: %s\n", strerror(error_num));
+
+        exit(EXIT_FAILURE);
+    }
+
+    unsigned int TEST_COUNT = file_unit_test_output(&file_ptr, to_test);
+
+    if (int error_num = close_file(&file_ptr, filename))
+    {
+        printf("Error: %s\n", strerror(error_num));
+
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Неверно пройденных тестов: %d/%u\n", run_all_tests(to_test, TEST_COUNT), TEST_COUNT);
+
+    #else // PROGRAMM_UNIT_TEST
+
+    size_t MAX_TEST_COUNT = sizeof(all_tests) / sizeof(struct unit_test_input);
+    printf("Неверно пройденных тестов: %d/%u\n", run_all_tests(all_test, TEST_COUNT), TEST_COUNT);
+
+    #endif // PROGRAMM_UNIT_TEST
+
+}
 
 
 

@@ -1,13 +1,11 @@
 #include "file_input.h"
 
-
-
-int open_file(FILE **fp, const char filename[])
+int open_file(FILE **file_ptr, const char filename[])
 {
-    MY_ASSERT(fp != NULL);
+    MY_ASSERT(file_ptr != NULL);
     MY_ASSERT(filename != NULL);
 
-    if ((*fp = fopen(filename, "r")) == NULL)
+    if ((*file_ptr = fopen(filename, "r")) == NULL)
     {
         fprintf(stderr, "Error in opening file: %s\n", filename);
 
@@ -17,13 +15,12 @@ int open_file(FILE **fp, const char filename[])
     return FILE_SUCCESS;
 }
 
-
-int close_file(FILE **fp, const char filename[])
+int close_file(FILE **file_ptr, const char filename[])
 {
-    MY_ASSERT(fp != NULL);
+    MY_ASSERT(file_ptr != NULL);
     MY_ASSERT(filename != NULL);
 
-    if (fclose(*fp))
+    if (fclose(*file_ptr))
     {
         fprintf(stderr, "Error in closing file: %s", filename);
 
@@ -33,9 +30,9 @@ int close_file(FILE **fp, const char filename[])
     return FILE_SUCCESS;
 }
 
-unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[])
+unsigned int file_unit_test_output(FILE **file_ptr, struct unit_test_input test_input[])
 {
-    MY_ASSERT(fp != NULL);
+    MY_ASSERT(file_ptr != NULL);
     MY_ASSERT(test_input != NULL);
 
 
@@ -49,8 +46,8 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     int ret = 0;
 
-    //                         a   b   c   nR  x1  x2
-    while ((ret = fscanf(*fp, "%lf %lf %lf %d %lf %lf\n",             \
+    //                                a   b   c   nR  x1  x2
+    while ((ret = fscanf(*file_ptr, "%lf %lf %lf %d %lf %lf\n",       \
                     &temp_a, &temp_b, &temp_c,                        \
                     &temp_n_roots, &temp_x1, &temp_x2                 \
                     )) != EOF && ret == 6)
@@ -74,7 +71,7 @@ unsigned int file_unit_test_output(FILE **fp, struct unit_test_input test_input[
 
     if (ret != EOF && ret != 6)
     {
-        print_error("Smth wrong in input data test #%u, ret = %d\n"                 \
+        print_error("Smth wrong in input data test #%u, ret = %d\n"
                     "All tests before scanned success\n", test_count, ret);
     }
 

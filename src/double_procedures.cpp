@@ -12,7 +12,6 @@ void set_minimum_solution(double *solution_x1, double *solution_x2)
     MY_ASSERT(solution_x1 != NULL);
     MY_ASSERT(solution_x2 != NULL);
 
-
     if (*solution_x1 > *solution_x2)
     {
         double temp_x = *solution_x1;

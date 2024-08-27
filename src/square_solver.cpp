@@ -132,7 +132,7 @@ void print_solution(const struct coefficient coef, const struct solution sol)
 
         default:
         {
-            fprintf(stderr, "ERROR: print_solutions(): %d", sol.n_roots);
+            fprintf(stderr, "ERROR: print_solutions(): %d\n", sol.n_roots);
             break;
         }
     }
@@ -146,12 +146,12 @@ void print_greeting()
 
 void clear_buffer(bool print_buf)
 {
-    int ch = 0;
-    while ((ch = getchar()) != '\n' && ch != EOF)
+    int symbol = 0;
+    while ((symbol = getchar()) != '\n' && symbol != EOF)
     {
-        if(print_buf)
+        if (print_buf)
         {
-            printf("%c", ch);
+            printf("%c", symbol);
         }
         else
         {

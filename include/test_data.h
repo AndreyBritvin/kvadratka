@@ -19,6 +19,7 @@
  * @brief Тестовые данные из структуры коэффициентов и решения
  *
  */
+#ifdef PROGRAMM_UNIT_TEST
 static struct unit_test_input all_tests[] =
 {
     //a, b, c                 n_roots,   x1,      x2
@@ -31,5 +32,6 @@ static struct unit_test_input all_tests[] =
     {{-5.6, 8.23,          0},    {TWO_ROOTS ,  0, 1.46964}},
     {{   1,    2,          1},    {ONE_ROOT  , -1,      -1}},
 };
+#endif // PROGRAMM_UNIT_TEST
 
 #endif // TEST_DATA_H___

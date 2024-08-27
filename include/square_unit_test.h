@@ -14,6 +14,9 @@
 
 #include "square_solver.h"
 #include "color_output.h"
+#include <string.h>
+#include <stdlib.h>
+#include "file_input.h"
 
 struct unit_test_input
 {
@@ -48,5 +51,12 @@ int run_test(unsigned int test_id, struct unit_test_input test_input);
  * @return int Количество неуспешных тестов
  */
 int run_all_tests(struct unit_test_input [], unsigned int MAX_TEST_COUNT);
+
+/**
+ * @brief Печать информации по результатам теста
+ *
+ * @param[in] filename Имя файла, откуда будут взяты данные для юнит теста
+ */
+void file_tests_result(const char filename[]);
 
 #endif // SQUARE_UNIT_TEST_H

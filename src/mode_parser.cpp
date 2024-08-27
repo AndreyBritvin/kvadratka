@@ -12,7 +12,7 @@ void parse_mode(const char programm_name[], const char mode[], const int flag_nu
 
     if (is_next_filename)
     {
-        tests_result(mode);
+        file_tests_result(mode);
         is_next_filename = false;
     }
 
@@ -99,32 +99,6 @@ bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *s
     }
 
     return false;
-}
-
-
-void tests_result(const char filename[])
-{
-    FILE *fp; // File to unit test data
-
-    struct unit_test_input to_test[MAX_UNIT_TEST_COUNT] = {};
-
-    if(int error_num = open_file(&fp, filename))
-    {
-        printf("Error: %s\n", strerror(error_num));
-
-        exit(EXIT_FAILURE);
-    }
-
-    unsigned int TEST_COUNT = file_unit_test_output(&fp, to_test);
-
-    if(int error_num = close_file(&fp, filename))
-    {
-        printf("Error: %s\n", strerror(error_num));
-
-        exit(EXIT_FAILURE);
-    }
-
-    printf("Неверно пройденных тестов: %d/%u\n", run_all_tests(all_tests, TEST_COUNT), TEST_COUNT);
 }
 
 void help()
