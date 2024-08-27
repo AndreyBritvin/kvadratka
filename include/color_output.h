@@ -12,6 +12,8 @@
 #ifndef COLOR_OUTPUT_H_
 #define COLOR_OUTPUT_H_
 
+#include <unistd.h>
+
 #include <stdio.h>
 #include <stdarg.h>
 

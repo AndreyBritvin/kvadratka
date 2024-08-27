@@ -7,9 +7,18 @@ int print_color(int color, const char * format, ...)
     va_list args;
     va_start (args, format);
 
-    set_color(color);
+    if (isatty(fileno(stdout)))
+    {
+        set_color(color);
+    }
+
     int ret_val = vprintf(format, args);
-    reset_color();
+
+
+    if (isatty(fileno(stdout)))
+    {
+        reset_color();
+    }
 
     va_end (args);
 

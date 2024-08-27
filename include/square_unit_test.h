@@ -12,8 +12,6 @@
 #ifndef SQUARE_UNIT_TEST_H
 #define SQUARE_UNIT_TEST_H
 
-#include <unistd.h>
-
 #include "square_solver.h"
 #include "color_output.h"
 
