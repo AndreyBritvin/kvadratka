@@ -2,6 +2,17 @@
 
 #include "test_data.h"
 
+const char HELP_COMMAND_LONG[]  = "--help";
+const char HELP_COMMAND_SHORT[] = "-h";
+
+const char TEST_COMMAND_LONG[]  = "--test";
+const char TEST_COMMAND_SHORT[] = "-t";
+
+const char VERSION_COMMAND_LONG[]  = "--version";
+const char VERSION_COMMAND_SHORT[] = "-v";
+
+const char SOLVE_COMMAND_LONG[]  = "--solve";
+const char SOLVE_COMMAND_SHORT[] = "-s";
 
 void parse_mode(const char programm_name[], const char mode[], const int flag_num, const int argc)
 {
@@ -16,17 +27,17 @@ void parse_mode(const char programm_name[], const char mode[], const int flag_nu
         is_next_filename = false;
     }
 
-    else if (cmp_str_to_multiple(mode, "-v", "--version"))
+    else if (cmp_str_to_multiple(mode, VERSION_COMMAND_SHORT, VERSION_COMMAND_LONG))
     {
         version();
     }
 
-    else if (cmp_str_to_multiple(mode, "-s", "--solve"))
+    else if (cmp_str_to_multiple(mode, SOLVE_COMMAND_SHORT, SOLVE_COMMAND_LONG))
     {
         solve_from_terminal();
     }
 
-    else if (cmp_str_to_multiple(mode, "-t", "--test"))
+    else if (cmp_str_to_multiple(mode, TEST_COMMAND_SHORT, TEST_COMMAND_LONG))
     {
         if (flag_num == argc)
         {
@@ -35,7 +46,7 @@ void parse_mode(const char programm_name[], const char mode[], const int flag_nu
         is_next_filename = true;
     }
 
-    else if (cmp_str_to_multiple(mode, "-h", "--help"))
+    else if (cmp_str_to_multiple(mode, HELP_COMMAND_SHORT, HELP_COMMAND_LONG))
     {
         help();
     }
@@ -103,15 +114,19 @@ bool cmp_str_to_multiple(const char *str_to_cmp, const char *str1, const char *s
 
 void help()
 {
-    printf("-h --help\n"
+    printf("%s %s\n"
            "Help command\n\n"
 
-            "-v --version\n"
+           "%s %s\n"
            "Print programm version\n\n"
 
-           "-t --test [filename]\n"
+           "%s %s [filename]\n"
            "Run unit tests from file\n\n"
 
-           "-s --solve\n"
-           "Solves ax^2+bx+c=0. Enter coeefficients\n\n");
+           "%s %s\n"
+           "Solves ax^2+bx+c=0. Enter coeefficients\n\n",
+              HELP_COMMAND_SHORT,    HELP_COMMAND_LONG,
+           VERSION_COMMAND_SHORT, VERSION_COMMAND_LONG,
+              TEST_COMMAND_SHORT,    TEST_COMMAND_LONG,
+             SOLVE_COMMAND_SHORT,   SOLVE_COMMAND_LONG);
 }
